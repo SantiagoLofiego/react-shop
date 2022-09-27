@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { useFirebese } from "./useFirebase";
 
-export const useFirestore = (dbColection) => {
+export const useFirestore = (dbCollection) => {
   const app= useFirebese();
   const db = getFirestore(app);
   const [documents, setDocuments] = useState([]);
@@ -12,7 +12,7 @@ export const useFirestore = (dbColection) => {
     async function fetchData() {
       let data = [];
       setLoading(true);
-      const response = await getDocs(collection(db, dbColection));
+      const response = await getDocs(collection(db, dbCollection));
       console.log(response.docs);
       response.forEach((doc) => {
         data.push(doc.data());
@@ -21,7 +21,7 @@ export const useFirestore = (dbColection) => {
       setLoading(false);
     }
     fetchData();
-  },[dbColection,db])
+  },[dbCollection,db])
 
   return [documents, loading];
 }
