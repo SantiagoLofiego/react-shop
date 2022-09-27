@@ -13,6 +13,7 @@ export const useFirestore = (dbColection) => {
       let data = [];
       setLoading(true);
       const response = await getDocs(collection(db, dbColection));
+      console.log(response.docs);
       response.forEach((doc) => {
         data.push(doc.data());
       })
@@ -20,7 +21,7 @@ export const useFirestore = (dbColection) => {
       setLoading(false);
     }
     fetchData();
-  },[])
+  },[dbColection,db])
 
   return [documents, loading];
 }
