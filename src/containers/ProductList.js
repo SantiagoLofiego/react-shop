@@ -1,9 +1,16 @@
 import React from 'react';
+import Product from '../components/Product'
 
-const ProductList = () => {
+import './productList.css'
+
+const ProductList = (props) => {
   return (
-    <div>
-      <h2>Product List</h2>
+    <div className="productsList">
+      {
+        props.products.map((prod, index) => {
+          return <Product key={index} prod={prod} />
+        })
+      }
     </div>
   );
 }
