@@ -1,6 +1,8 @@
+import React from 'react';
+
 import './product.css'
 
-function Producto (props) {
+function Product (props) {
     const product = props.prod;
     return (
         <div title="Ver producto">
@@ -17,4 +19,4 @@ function Producto (props) {
     )
 }
 
-export default Producto;
+export default Product;
