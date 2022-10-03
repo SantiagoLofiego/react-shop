@@ -13,19 +13,13 @@ const ProductList = ({products}) => {
     searchedProducts = products;
   }
   else {
-    const searchedProductsTitle = products.filter(product => {
+    searchedProducts = products.filter(product => {
       const productTitle = product.title.toLowerCase();
-      const searchText = searchValue.toLowerCase();
-      return productTitle.includes(searchText);
-    });
-    const searchedProductsDesc = products.filter(product => {
       const productDescription = product.shortDescription.toLowerCase();
       const searchText = searchValue.toLowerCase();
-      return productDescription.includes(searchText);
-    })
-    searchedProducts = [...new Set([...searchedProductsTitle, ...searchedProductsDesc])];
+      return productTitle.includes(searchText) || productDescription.includes(searchText);
+    });
   }
-
 
   return (
     <>
