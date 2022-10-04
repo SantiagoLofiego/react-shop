@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel } from '../containers/Carousel';
+import { MainCarousel } from '../containers/MainCarousel';
 import { ProductList } from '../containers/ProductList';
 import { useFirestore } from '../hooks/useFirestore';
 
@@ -9,7 +9,7 @@ const Home = () => {
     <React.Fragment>
       {loading?<h2>Cargando ...</h2>:''}
       {products.map((prod,index) => <h3 key={'prod'+index}>{prod.title} ${prod.price}</h3>)}
-      <Carousel />
+      <MainCarousel />
       <ProductList />
     </React.Fragment>
   );
