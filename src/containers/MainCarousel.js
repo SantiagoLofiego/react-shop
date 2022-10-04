@@ -25,7 +25,7 @@ const MainCarousel = () => {
             {bannerList.map((pic) =>
             <Carousel.Item key={pic.id} className='h-75'>
                     <img
-                    height={windowSize > 750 ? {height:"345px"} : {height:"200px"}}
+                    height={windowSize > 750 ? "345px" : "200px"}
                     className="mw-100"
                     src={pic.src}
                     alt=""
