@@ -13,7 +13,6 @@ export const useFirestore = (dbCollection) => {
       let data = [];
       setLoading(true);
       const response = await getDocs(collection(db, dbCollection));
-      console.log(response.docs);
       response.forEach((doc) => {
         data.push(doc.data());
       })
