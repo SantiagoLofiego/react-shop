@@ -1,32 +1,17 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
+import { useAccount } from "../hooks/useAccount";
+import { cartInitialState, cartReducer } from "../reducers/cartReducer";
 
 const AppContext = React.createContext();
 
 const ContextProvider = ({ children }) => {
 
-  const [cart, setCart] = useState([]);
-
-  const addToCart = (product) => {
-    const productToAdd = {
-      id: product.id,
-      title: product.title,
-      image: product.image,
-      price: product.price,
-      quantity: 1,
-    }
-    const index = cart.findIndex(prod => prod.id === product.id);
-    if (index > -1) {
-      let newCart = [...cart];
-      newCart[index].quantity++;
-      setCart(newCart);
-    } else {
-      setCart([...cart, productToAdd]);
-    }
-  }
+  const [cart, cartDispatcher] = useReducer(cartReducer, cartInitialState);
+  const { userState, loginWithEmailAndPassword, singUp, logout } = useAccount();
 
 
   return (
-    <AppContext.Provider value={{ cart, addToCart }}>
+    <AppContext.Provider value={{ cart, cartDispatcher, userState, loginWithEmailAndPassword, singUp, logout }}>
       {children}
     </AppContext.Provider>
   )

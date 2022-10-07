@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import Product from '../components/Product'
 import SearchBar from '../components/SearchBar';
+import { useProducts } from '../hooks/useProducts';
 
 import './productList.css'
 
-const ProductList = ({products}) => {
+const ProductList = () => {
+  console.log('RENDER PRODUCTS')
+  const [products, loading] = useProducts();
   const [ searchValue, setSearchValue ] = useState('');
   
   let searchedProducts = [];
@@ -24,6 +27,7 @@ const ProductList = ({products}) => {
   return (
     <>
       <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
+      {loading? <h2>Cargando...</h2> : null}
       <div className="productsList">
         {
           searchedProducts.map((prod, index) => {
