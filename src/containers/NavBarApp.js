@@ -18,7 +18,7 @@ function NavBarApp() {
             className="me-auto my-2 my-lg-0 d-flex justify-content-end w-100 "
             navbarScroll
           >
-            <LinkContainer to="/home">
+            <LinkContainer to="/">
               <Nav.Link className="pb-2" >Home</Nav.Link>
             </LinkContainer>
             <Button variant="outline-primary"  className="btn btn-outline-primary my-2 my-lg-0 mx-lg-3">Login</Button>

@@ -1,15 +1,16 @@
 import React from 'react';
 import { MainCarousel } from '../containers/MainCarousel';
 import { ProductList } from '../containers/ProductList';
-import { useFirestore } from '../hooks/useFirestore';
+
 
 const Home = () => {
-  const [products, loading] = useFirestore('products');
+
+  
+  console.log('RENDER HOME')
   return (
     <React.Fragment>
       <MainCarousel />
-      {loading?<h2>Cargando ...</h2>:''}
-      <ProductList products={products} />
+      <ProductList />
     </React.Fragment>
   );
 }
