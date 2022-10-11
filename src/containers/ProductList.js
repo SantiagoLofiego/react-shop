@@ -6,12 +6,11 @@ import { useProducts } from '../hooks/useProducts';
 import './productList.css'
 
 const ProductList = () => {
-  console.log('RENDER PRODUCTS')
   const [products, loading] = useProducts();
-  const [ searchValue, setSearchValue ] = useState('');
-  
+  const [searchValue, setSearchValue] = useState('');
+
   let searchedProducts = [];
-  
+
   if (!searchValue.length >= 1) {
     searchedProducts = products;
   }
@@ -27,7 +26,7 @@ const ProductList = () => {
   return (
     <>
       <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
-      {loading? <h2>Cargando...</h2> : null}
+      {loading ? <h2>Cargando...</h2> : null}
       <div className="productsList">
         {
           searchedProducts.map((prod, index) => {
