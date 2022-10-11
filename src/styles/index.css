@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.carousel-control-prev-icon {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Chevron_Left-512.png);
+  background-color: #f8f9fa;
+  border-radius: 0px 15px 15px 0px;
+  box-shadow: 3px 2px 3px #41464b;
+}
+
+.carousel-control-next-icon {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Chevron_Right-512.png);
+  background-color: #f8f9fa;
+  border-radius: 15px 0px 0px 15px;
+  box-shadow: -1px 2px 3px #41464b;
+}
