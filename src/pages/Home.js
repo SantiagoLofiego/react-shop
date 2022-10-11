@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel } from '../containers/Carousel';
+import { MainCarousel } from '../containers/MainCarousel';
 import { ProductList } from '../containers/ProductList';
 
 
@@ -9,7 +9,7 @@ const Home = () => {
   console.log('RENDER HOME')
   return (
     <React.Fragment>
-      <Carousel />
+      <MainCarousel />
       <ProductList />
     </React.Fragment>
   );
