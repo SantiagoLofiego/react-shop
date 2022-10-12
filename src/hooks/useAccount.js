@@ -1,5 +1,5 @@
-import { useReducer } from "react";
-import { authlogout, login, register } from "../firebase/firebaseAuth";
+import { useReducer, useEffect } from "react";
+import { authlogout, login, register, auth } from "../firebase/firebaseAuth";
 import { userInitialState, userReducer } from "../reducers/userReducer";
 
 const useAccount = () => {
@@ -44,6 +44,20 @@ const useAccount = () => {
     userDispatcher({ type: 'LOGOUT' })
   }
 
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      console.log(user)
+      if (user) {
+        const newUser = {
+          authenticated: true,
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName
+        }
+        userDispatcher({ type: 'LOGIN', payload: newUser });
+      }
+    })
+  }, [])
 
   return { userState, loginWithEmailAndPassword, singUp, logout }
 

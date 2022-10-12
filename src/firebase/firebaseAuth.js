@@ -36,6 +36,5 @@ const authlogout = () => {
     .catch(error => console.log(error))
 }
 
-const currentUser = auth.currentUser
 
-export { register, login, authlogout, currentUser }
+export { register, login, authlogout, auth }
