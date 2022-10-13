@@ -19,10 +19,12 @@ export const cartReducer = (state, action) => {
 const addToCart = (product, cart) => {
   const stock = product.stock;
   const productToAdd = {
+    fid: product.fid,
     id: product.id,
     title: product.title,
     image: product.image,
     price: product.price,
+    stock: product.stock,
     quantity: 1,
   }
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getFirsoreDocs } from "../firebase/firestore";
+import { getAllDocuments } from "../firebase/firestore";
 
 
 export const useProducts = () => {
@@ -8,7 +8,7 @@ export const useProducts = () => {
 
   useEffect(() => {
     setLoading(true);
-    getFirsoreDocs('products')
+    getAllDocuments('products')
       .then(documents => setProducts(documents))
       .then(()=>setLoading(false))
       .catch( error => console.log(error));

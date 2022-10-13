@@ -29,11 +29,10 @@ const login = (email, password) => {
 }
 
 const authlogout = () => {
-  console.log(auth.currentUser);
   signOut(auth)
     .then(resp => {console.log('Logged Out')
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log('error'))
 }
 
 

@@ -40,13 +40,12 @@ const useAccount = () => {
   }
 
   const logout = () => {
-    authlogout();
     userDispatcher({ type: 'LOGOUT' })
+    authlogout();
   }
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      console.log(user)
       if (user) {
         const newUser = {
           authenticated: true,

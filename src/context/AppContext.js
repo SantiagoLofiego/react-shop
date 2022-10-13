@@ -6,12 +6,12 @@ const AppContext = React.createContext();
 
 const ContextProvider = ({ children }) => {
 
-  const [cart, cartDispatcher] = useReducer(cartReducer, cartInitialState);
+  const [cartState, cartDispatcher] = useReducer(cartReducer, cartInitialState);
   const { userState, loginWithEmailAndPassword, singUp, logout } = useAccount();
 
 
   return (
-    <AppContext.Provider value={{ cart, cartDispatcher, userState, loginWithEmailAndPassword, singUp, logout }}>
+    <AppContext.Provider value={{ cartState, cartDispatcher, userState, loginWithEmailAndPassword, singUp, logout }}>
       {children}
     </AppContext.Provider>
   )
