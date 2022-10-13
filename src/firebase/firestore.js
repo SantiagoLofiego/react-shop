@@ -30,9 +30,10 @@ async function getDocument(collectionName, docID) {
   try {
     const ref = doc(db, collectionName, docID);
     const document = await getDoc(ref, docID);
-    return document
+    return document.data();
   } catch (error) {
-    throw new Error(error.message);
+    console.log(error)
+    throw new Error(error);
   }
 }
 
