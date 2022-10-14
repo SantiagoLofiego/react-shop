@@ -1,0 +1,84 @@
+.Auth-form-container {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 20s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.Auth-form-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.Auth-form {
+	width: 420px;
+	box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+	padding-top: 30px;
+	padding-bottom: 20px;
+	border-radius: 8px;
+	background-color: white;
+}
+
+.Auth-form-content {
+	padding-left: 12%;
+	padding-right: 12%;
+}
+
+.Auth-form-title {
+	text-align: center;
+	margin-bottom: 1em;
+	font-size: 24px;
+	color: rgb(34, 34, 34);
+	font-weight: 800;
+}
+
+label {
+	font-size: 14px;
+	font-weight: 600;
+	color: rgb(34, 34, 34);
+}
+
+.alert-session {
+	position: fixed;
+	top: 67px;
+	z-index: 3;
+	right: 130px;
+	-webkit-animation-name: fadeOut;
+	animation-name: fadeOut;
+	-webkit-animation-duration: 5s;
+	animation-duration: 5s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.userMail {
+	margin-top: 8px;
+	margin-bottom: 0px;
+	padding-right: 20px;
+}
