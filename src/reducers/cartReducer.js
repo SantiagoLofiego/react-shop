@@ -9,6 +9,9 @@ export const cartReducer = (state, action) => {
 
     case 'REMOVE_FROM_CART':
       return { ...state, cart: removeFromCart(action.payload, state.cart) };
+    
+    case 'EMPTY_CART':
+      return cartInitialState;
 
     default:
       return state;

@@ -12,15 +12,18 @@ const Account = () => {
     password: '123456'
   }
   let total = 0;
-  cartState.cart.forEach((item)=>total+= (item.quantity * item.price))
+  cartState.cart.forEach((item) => total += (item.quantity * item.price))
   const handleChekout = () => {
     checkout(cartState.cart, userState.user)
   }
-  const add = (product) =>{
-    cartDispatcher({type:'ADD_TO_CART', payload: product})
+  const add = (product) => {
+    cartDispatcher({ type: 'ADD_TO_CART', payload: product })
   }
-  const remove = (product) =>{
+  const remove = (product) => {
     cartDispatcher({ type: 'REMOVE_FROM_CART', payload: product })
+  }
+  const emptyCart = () => {
+    cartDispatcher({ type: 'EMPTY_CART' })
   }
 
   return (
@@ -32,15 +35,16 @@ const Account = () => {
       <ol>
         {cartState.cart.map(item => {
           return <li key={item.fid}>
-            {item.title} cantidad: <button onClick={()=>remove(item)}>-</button>{item.quantity}<button onClick={()=>add(item)}>+</button> precio ${item.price}
+            {item.title} cantidad: <button onClick={() => remove(item)}>-</button>{item.quantity}<button onClick={() => add(item)}>+</button> precio ${item.price}
             <h5>subtotal $ {item.price * item.quantity}</h5>
           </li>
         })}
       </ol>
+      <button onClick={emptyCart}>Vaciar </button>
       <h3>TOTAL: ${total}</h3>
       <br />
-      {status? <h3>{status}</h3>: ''}
-      {error? <h3>{error}</h3> : ''}
+      {status ? <h3>{status}</h3> : ''}
+      {error ? <h3>{error}</h3> : ''}
       <br />
       <button onClick={handleChekout}>Comprar</button>
       {userState.checking ? <h3>Verificando</h3> : null}
