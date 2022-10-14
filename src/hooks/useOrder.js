@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { getDocument, addDocument, updateDocument } from "../firebase/firestore";
+import { getDocument } from "../firebase/firestore";
 
 const useOrder = () => {
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(null);
-  const testCart= [{title:'gafas', fid:'5XMvyBtVfnF8Ziurnkimx', quantity:10},{title:'nutella',fid:'QNRDmikwgKWG59aomaa6', quantity:5},{title:'coca',fid:'l7dD6TqekaNSiUZ2HVtJ', quantity:6}]
+  //const testCart= [{title:'gafas', fid:'5XMvyBtVfnF8Ziurnkimx', quantity:10},{title:'nutella',fid:'QNRDmikwgKWG59aomaa6', quantity:5},{title:'coca',fid:'l7dD6TqekaNSiUZ2HVtJ', quantity:6}]
 
 
   const checkout = async (cart, user) => {
-    setStatus('Processing')
     reset();
+    setStatus('Processing')
     if (cart.length < 1) {
       setError('Cart is empty')
       setStatus(null)
@@ -21,11 +21,11 @@ const useOrder = () => {
       return
     }
     const stockStatus = await checkCartStock(cart);
-    if(stockStatus==='error'){
+    if (stockStatus === 'error') {
       setStatus('Error');
       setError('Error en alguno de los items del carrito')
       return
-    }else if(!stockStatus){
+    } else if (!stockStatus) {
       setStatus('Error');
       setError('Alguno de los items no tiene suficiente stock')
       return
@@ -51,24 +51,24 @@ const useOrder = () => {
     }
   }
 
-  const checkCartStock = async (cart)=>{
-    let checkPromises=[];
-    let error=null;
-    let result=true;
+  const checkCartStock = async (cart) => {
+    let checkPromises = [];
+    let error = null;
+    let result = true;
     for (const product of cart) {
-      checkPromises.push(checkProductStock(product.fid,product.quantity));
+      checkPromises.push(checkProductStock(product.fid, product.quantity));
     }
     const responses = await Promise.all(checkPromises);
     console.log(responses)
     for (const resp of responses) {
-      if(resp ==='error'){
+      if (resp === 'error') {
         error = resp
-      }else if(!resp){
-        result= false;
+      } else if (!resp) {
+        result = false;
       }
     }
 
-    if(error){
+    if (error) {
       return error
     }
     return result

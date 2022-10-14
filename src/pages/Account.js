@@ -4,7 +4,7 @@ import { AppContext } from "../context/AppContext";
 import { useOrder } from "../hooks/useOrder";
 import { useProducts } from "../hooks/useProducts";
 const Account = () => {
-  const [products, loading] = useProducts();
+  const [products] = useProducts();
   const { userState, loginWithEmailAndPassword, singUp, logout, cartState, cartDispatcher } = useContext(AppContext)
   const { error, status, checkout } = useOrder();
   const formData = {
