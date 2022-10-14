@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from "../context/AppContext";
 
@@ -15,9 +15,11 @@ const SignIn = ({ changeAuthMode }) => {
 		loginWithEmailAndPassword(email, password)
 	}
 
-	const completeLogin = () => {
-		navigate('/');
-	}
+	useEffect(() => {
+		if (userState.user.authenticated) {
+			navigate('/')
+		}
+	}, [navigate, userState])
 
 	const formDataInitial = {
 		email: '',
@@ -53,7 +55,6 @@ const SignIn = ({ changeAuthMode }) => {
 							Iniciar
 						</button>
 						{userState.checking ? <h3>Verificando</h3> : null}
-						{userState.user.authenticated ? completeLogin() : ''}
 						{userState.error}
 					</div>
 					{/* <p className="text-center mt-2">
