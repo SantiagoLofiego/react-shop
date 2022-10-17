@@ -19,15 +19,19 @@ const ProductDetail = ({item}) => {
 
                     <div className='d-flex flex-column justify-content-center'>  
                         {/* <Link className='mt-3' to='/' > */}
+                        <div className='mt-3'>
                             <Button>
                                 Continuar Compra
                             </Button>
+                        </div>
                         {/* </Link> */}
                         {/* <Link className='mt-3' to='/cart'> */}
+                        <div className='mt-3'>    
                             <Button >
                                 Terminar Compra
                             </Button>
                         {/* </Link> */}
+                        </div>
                     </div>
         
 
