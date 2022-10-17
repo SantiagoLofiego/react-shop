@@ -3,7 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import { NotFound } from '../pages/NotFound';
 import { Home } from '../pages/Home';
 import { Account } from '../pages/Account';
-import '../styles/App.css'
+import { Login } from '../pages/Login';
+import '../styles/App.css';
 import NavBarApp from '../containers/NavBarApp';
 import Layout from '../containers/Layout';
 import ProductDetailContainer from '../containers/ProductDetailContainer';
@@ -21,6 +22,7 @@ function App() {
             <ProductDetailContainer />
           }
         />
+        <Route path='/login' element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
