@@ -16,7 +16,6 @@ const ProductDetailContainer = () => {
           const item = doc(db, 'products', id);
       
           const response = await getDoc(item);
-          console.log("PRODUCTO: " + JSON.stringify(response.data()));
           setProd({id: response.id, ...response.data()});
         
         } catch (error) {

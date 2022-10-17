@@ -2,10 +2,10 @@ export const cartInitialState = {
   cart: []
 }
 
-export const cartReducer = (state, action) => {
+export const cartReducer = (state, action, qty) => {
   switch (action.type) {
     case 'ADD_TO_CART':
-      return { ...state, cart: addToCart(action.payload, state.cart) };
+      return { ...state, cart: addToCart(action.payload, state.cart, qty) };
 
     case 'REMOVE_FROM_CART':
       return { ...state, cart: removeFromCart(action.payload, state.cart) };
@@ -19,7 +19,7 @@ export const cartReducer = (state, action) => {
 
 }
 
-const addToCart = (product, cart) => {
+const addToCart = (product, cart, qty) => {
   const stock = product.stock;
   const productToAdd = {
     fid: product.fid,
@@ -28,7 +28,7 @@ const addToCart = (product, cart) => {
     image: product.image,
     price: product.price,
     stock: product.stock,
-    quantity: 1,
+    quantity: qty,
   }
 
   const index = cart.findIndex(prod => prod.id === product.id);

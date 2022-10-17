@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import InnerImageZoom from 'react-inner-image-zoom';
 import { FaTruck } from 'react-icons/fa';
+import ItemCount from './ItemCount';
 import '../styles/ProductDetail.css'
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
+import { AppContext } from '../context/AppContext';
 
 const ProductDetail = ({ item }) => {
+    const [isCount, setIsCount] = useState(false);
+    const { cartDispatcher } = React.useContext(AppContext);
+
+    const onAdd = (count) => {
+        const qty = count;
+        cartDispatcher({ type: 'ADD_TO_CART', payload: item }, qty);
+        setIsCount(true);
+    }
+
     return (
         <div>
             <Breadcrumb className='container mt-2'>
@@ -32,36 +43,42 @@ const ProductDetail = ({ item }) => {
                     <Col md={4} className="border border-1 rounded mb-2">
 
                         <div className='d-flex justify-content-center flex-column'>
-                        <span className='mt-2'>
-                            <FaTruck /> Envío a todo el país
-                        </span>
-                        {item.stock > 0 ?
-                        <span className='fw-bolder mt-2'>
-                            Stock Disponible
-                        </span>
-                         :
-                        <span className='fw-bolder mt-2'>
-                             Sin Stock
-                        </span>
-                         }
+                            <span className='mt-2'>
+                                <FaTruck /> Envío a todo el país
+                            </span>
+                            {item.stock > 0 ?
+                                <span className='fw-bolder mt-2'>
+                                    Stock Disponible
+                                </span>
+                                :
+                                <span className='fw-bolder mt-2'>
+                                    Sin Stock
+                                </span>
+                            }
                         </div>
 
-                        <div className='d-flex flex-column justify-content-center'>
-                            {/* <Link className='mt-3' to='/' > */}
-                            <div className='mt-3'>
-                                <Button>
-                                    Continuar Compra
-                                </Button>
-                            </div>
-                            {/* </Link> */}
-                            {/* <Link className='mt-3' to='/cart'> */}
-                            <div className='mt-3'>
-                                <Button >
-                                    Terminar Compra
-                                </Button>
-                                {/* </Link> */}
-                            </div>
-                        </div>
+                        {isCount ?
+                            <div className='d-flex flex-column justify-content-center'>
+                                {/* <Link className='mt-3' to='/' > */}
+                                <div className='mt-3'>
+                                    <Button>
+                                        Continuar Compra
+                                    </Button>
+                                    {/* </Link> */}
+                                    </div>
+                                    {/* <Link className='mt-3' to='/cart'> */}
+                                    <div className='mt-3'>
+                                        <Button >
+                                            Terminar Compra
+                                        </Button>
+                                    </div>
+                                    {/* </Link> */}
+                                </div>
+                                :
+                                <div className='d-flex flex-column justify-content-center'>
+                                    <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+                                </div>
+                        }
 
 
                     </Col>
