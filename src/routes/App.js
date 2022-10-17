@@ -6,6 +6,7 @@ import { Account } from '../pages/Account';
 import '../styles/App.css'
 import NavBarApp from '../containers/NavBarApp';
 import Layout from '../containers/Layout';
+import ProductDetailContainer from '../containers/ProductDetailContainer';
 
 function App() {
   return (
@@ -14,6 +15,12 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/account' element={<Account />} />
+        <Route
+          path='/item/:id'
+          element={
+            <ProductDetailContainer />
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
