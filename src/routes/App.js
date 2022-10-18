@@ -7,6 +7,7 @@ import { Login } from '../pages/Login';
 import '../styles/App.css';
 import NavBarApp from '../containers/NavBarApp';
 import Layout from '../containers/Layout';
+import { Checkout } from '../pages/Checkout';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/account' element={<Account />} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='/login' element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
