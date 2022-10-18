@@ -14,7 +14,7 @@ const ProductDetail = ({ item }) => {
 
     const onAdd = (count) => {
         const qty = count;
-        cartDispatcher({ type: 'ADD_TO_CART', payload: item }, qty);
+        cartDispatcher({ type: 'ADD_TO_CART', payload: item, qty: qty });
         setIsCount(true);
     }
 
