@@ -3,7 +3,7 @@ import React from "react";
 const OrderItem = ({ item }) => {
   const setValues = item => {
     if (item.status === 'badStock') {
-      return ({ style: 'alert alert-warning', message: `Solo ${item.actualStock} unidades disponibles` })
+      return ({ style: 'alert alert-warning', message: `Solo ${item.stock} unidades disponibles` })
     } else if (item.status === 'ok') {
       return { style: 'alert alert-success', message: '' }
     } else if (item.status === 'error') {
