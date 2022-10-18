@@ -7,14 +7,15 @@ import ItemCount from './ItemCount';
 import '../styles/ProductDetail.css'
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
 import { AppContext } from '../context/AppContext';
+import { Link } from 'react-router-dom';
 
 const ProductDetail = ({ item }) => {
     const [isCount, setIsCount] = useState(false);
     const { cartDispatcher } = React.useContext(AppContext);
-
+    console.log(item);
     const onAdd = (count) => {
         const qty = count;
-        cartDispatcher({ type: 'ADD_TO_CART', payload: item }, qty);
+        cartDispatcher({ type: 'ADD_TO_CART', payload: item, qty: qty });
         setIsCount(true);
     }
 
@@ -38,11 +39,18 @@ const ProductDetail = ({ item }) => {
                         <h3>{item.title}</h3>
 
                         <h5>$ {item.price}</h5>
+
+                        <p className="card-text mt-2">
+                            {item.longDescription}
+                        </p>
                     </Col>
 
                     <Col md={4} className="border border-1 rounded mb-2">
 
                         <div className='d-flex justify-content-center flex-column'>
+                            <p className="card-text mt-2 fw-bold fs-4">
+                                {item.shortDescription}
+                            </p>
                             <span className='mt-2'>
                                 <FaTruck /> Envío a todo el país
                             </span>
@@ -59,25 +67,18 @@ const ProductDetail = ({ item }) => {
 
                         {isCount ?
                             <div className='d-flex flex-column justify-content-center'>
-                                {/* <Link className='mt-3' to='/' > */}
                                 <div className='mt-3'>
-                                    <Button>
-                                        Continuar Compra
-                                    </Button>
-                                    {/* </Link> */}
-                                    </div>
-                                    {/* <Link className='mt-3' to='/cart'> */}
-                                    <div className='mt-3'>
-                                        <Button >
-                                            Terminar Compra
+                                    <Link className='mt-3' to='/' >
+                                        <Button>
+                                            Continuar Compra
                                         </Button>
-                                    </div>
-                                    {/* </Link> */}
+                                    </Link>
                                 </div>
-                                :
-                                <div className='d-flex flex-column justify-content-center'>
-                                    <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
-                                </div>
+                            </div>
+                            :
+                            <div className='d-flex flex-column justify-content-center'>
+                                <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+                            </div>
                         }
 
 
