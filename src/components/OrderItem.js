@@ -12,9 +12,7 @@ const OrderItem = ({ item }) => {
     else return { style: 'alert alert-primary', message: '' };
   }
   const { style, message } = setValues(item);
-
-  console.log(style, message)
-
+  
   return (
     <div className={'order-item ' + style}>
       <h4 className="order-item-title">{item.title}</h4>

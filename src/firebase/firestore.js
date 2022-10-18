@@ -32,7 +32,6 @@ async function getDocument(collectionName, docID) {
     const document = await getDoc(ref, docID);
     return document.data();
   } catch (error) {
-    console.log(error)
     throw new Error(error);
   }
 }
