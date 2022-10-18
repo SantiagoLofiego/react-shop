@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-const CartTotal = ({productLength, total}) => {
+const CartTotal = ({ productLength, total }) => {
   return (
     <div className="d-flex flex-column justify-content-center  aling-items-center">
       <h5 className="mt-3">Cantidad de productos: {productLength}</h5>
@@ -10,6 +10,6 @@ const CartTotal = ({productLength, total}) => {
       </div>
     </div>
   );
-}
+};
 
 export default CartTotal;

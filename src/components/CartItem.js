@@ -1,8 +1,8 @@
 import React from "react";
 import "../containers/ShoppingCart.css";
 
-const CartItem = ({prod, cartDispatcher}) => {
-    let {image, title, quantity, price} = prod;
+const CartItem = ({ prod, cartDispatcher }) => {
+  let { image, title, quantity, price } = prod;
   return (
     <div className="productDetail">
       <div className="divImg">
