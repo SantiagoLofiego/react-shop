@@ -36,7 +36,7 @@ const ProductList = () => {
           :
           <div className='container m-2 shadow-sm p-3 mb-5 bg-body rounded d-flex'>
             <div className='p-2 flex-shrink-1'>
-              <img src={glassPic} width={'130px'} />
+              <img src={glassPic} width={'130px'} alt='' />
             </div>
             <div className='p-2 w-100'>
               <h4>No hay resultados que coincidan con tu búsqueda.</h4>

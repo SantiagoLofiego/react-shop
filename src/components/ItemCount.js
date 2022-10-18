@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react';
-import {Link} from 'react-router-dom';
 import {InputGroup, Button, FormControl, Row, Col} from 'react-bootstrap';
 import {GrFormAdd, GrFormSubtract} from "react-icons/gr";
 import '../styles/ItemCount.css';

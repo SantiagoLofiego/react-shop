@@ -25,7 +25,7 @@ const ProductDetailContainer = () => {
       }
 
       getElementById();
-    }, [])
+    }, [id])
   return (
     <div>
         <ProductDetail className="bg-product" item={prod}/>
