@@ -1,22 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 import './product.css'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { BsCartPlus, BsInfoCircle } from 'react-icons/bs';
 
 function Product(props) {
   const product = props.prod;
   const { cartDispatcher } = React.useContext(AppContext);
   return (
-    <div title="Ver producto">
-      <span><img className="imageProd" src={product.image} alt="producto" /></span>
-      <h4>{product.title}</h4>
-      <div>{product.shortDescription}</div>
-      <div>Precio: $ {product.price}</div>
-      <div>Stock: {product.stock}</div>
-      <div>
-        <button title="Ver detalle" >Detalle</button>
-        <button title="Agregar al carrito" onClick={() => cartDispatcher({ type: 'ADD_TO_CART', payload: product })}>Agregar</button>
-      </div>
-    </div>
+    <Card style={{ width: '18rem' }} className='m-2'>
+      <Card.Img variant="top" src={product.image} />
+      <Card.Body>
+        <Card.Title>{product.title}</Card.Title>
+        <Card.Text>
+          {product.shortDescription}
+        </Card.Text>
+        <Button variant="primary" onClick={() => cartDispatcher({ type: 'ADD_TO_CART', payload: product })} className='me-1'>
+          <BsCartPlus /> Agregar
+        </Button>
+        <Link to={`/item/${product.fid}`} className="text-decoration-none ms-1">
+          <Button variant="primary">
+            <BsInfoCircle /> Detalle
+          </Button>
+        </Link>
+
+      </Card.Body>
+    </Card>
   )
 }
 

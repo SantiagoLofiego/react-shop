@@ -7,6 +7,7 @@ import { Login } from '../pages/Login';
 import '../styles/App.css';
 import NavBarApp from '../containers/NavBarApp';
 import Layout from '../containers/Layout';
+import ProductDetailContainer from '../containers/ProductDetailContainer';
 import { Checkout } from '../pages/Checkout';
 
 function App() {
@@ -16,6 +17,12 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/account' element={<Account />} />
+        <Route
+          path='/item/:id'
+          element={
+            <ProductDetailContainer />
+          }
+        />
         <Route path='/checkout/:id' element={<Checkout />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/login' element={<Login />} />

@@ -1,16 +1,25 @@
 import React from 'react'
+import { InputGroup, Form } from 'react-bootstrap';
+import { BsSearch } from 'react-icons/bs';
+
 
 const SearchBar = ({ searchValue, setSearchValue }) => {
 
-    const onSeachValueChange = (event) => {
-        setSearchValue(event.target.value);
-    }
+  const onSearchValueChange = (event) => {
+    setSearchValue(event.target.value);
+  }
 
   return (
     <div>
-        <div className="searchBar">
-            <input type='text' placeholder='Buscar productos' onChange={onSeachValueChange} />
-        </div>
+      <InputGroup className="mb-3 container">
+        <Form.Control
+          placeholder="Buscar productos..."
+          onChange={onSearchValueChange}
+        />
+        <InputGroup.Text id="basic-addon2" className='bg-light'>
+          <BsSearch />
+        </InputGroup.Text>
+      </InputGroup>
     </div>
   )
 }
