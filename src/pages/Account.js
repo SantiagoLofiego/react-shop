@@ -13,7 +13,7 @@ const Account = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    simpleQuery('orders','email','==', userState.user.email)
+    simpleQuery('orders','email','==', userState.user.email,'date')
     .then(resp => setOrders(resp))
     .catch(e => setError(e) )
   },[userState.user.email])

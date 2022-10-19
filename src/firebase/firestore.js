@@ -46,11 +46,11 @@ async function updateDocument(collectionName, docID, data){
   }
 }
 
-async function simpleQuery(collectionName, param1, operator, param2){
+async function simpleQuery(collectionName, param1, operator, param2, orderby){
   let documents =[];
   try {
     const collectionRef = collection(db,collectionName);
-    const q = query(collectionRef, where(param1,operator,param2),orderBy("date",'desc'));
+    const q = query(collectionRef, where(param1,operator,param2),orderBy(orderby,'desc'));
     const data = await getDocs(q);
     console.log(data)
     data.forEach((doc) => {
