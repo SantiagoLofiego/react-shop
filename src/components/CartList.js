@@ -3,7 +3,7 @@ import CartItem from "./CartItem";
 import CartEmpty from "./CartEmpty";
 import CartTotal from "./CartTotal";
 import Button from "react-bootstrap/Button";
-import "../containers/ShoppingCart.css";
+import "../styles/ShoppingCart.css";
 import { useNavigate } from "react-router-dom";
 
 const CartList = (props) => {

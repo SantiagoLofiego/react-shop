@@ -4,7 +4,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { AppContext } from "../context/AppContext";
 import { useEffect } from "react";
 import CartList from "../components/CartList";
-import "./ShoppingCart.css";
+import "../styles/ShoppingCart.css";
 
 const ShopingCart = () => {
   const [isActiveCart, setActiveCart] = useState(false);

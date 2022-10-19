@@ -55,7 +55,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
             </Button>
             <FormControl
             id="countInput"
-            value={count}
+            placeholder={count}
             />
             <Button variant="outline-secondary" id="button-addon2" onClick={addItem}>
                 <GrFormAdd></GrFormAdd>
