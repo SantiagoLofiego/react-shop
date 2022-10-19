@@ -51,7 +51,7 @@ const SignUp = ({ changeAuthMode }) => {
 						<input type="password" name="password" className="form-control mt-1" placeholder="Ingresa la Password" onChange={handlerChange} />
 					</div>
 					<div className="d-grid gap-2 mt-3">
-						<button type="bottom" className="btn btn-primary" onClick={() => { handlerClickRegister(formData.email, formData.password) }}>
+						<button disabled={userState.checking ? true: false} type="bottom" className="btn btn-primary" onClick={() => { handlerClickRegister(formData.email, formData.password) }}>
 							Registrar
 						</button>
 						{userState.checking ? <h3>Verificando</h3> : null}

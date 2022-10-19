@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc, doc, updateDoc, getDoc, query, where } from "firebase/firestore";
+import { collection, getDocs, addDoc, doc, updateDoc, getDoc, query, where, orderBy } from "firebase/firestore";
 import { db } from "./firebaseConfig";
 
 async function getAllDocuments(collectionName) {
@@ -50,7 +50,7 @@ async function simpleQuery(collectionName, param1, operator, param2){
   let documents =[];
   try {
     const collectionRef = collection(db,collectionName);
-    const q = query(collectionRef, where(param1,operator,param2));
+    const q = query(collectionRef, where(param1,operator,param2),orderBy("date",'desc'));
     const data = await getDocs(q);
     console.log(data)
     data.forEach((doc) => {
@@ -59,6 +59,7 @@ async function simpleQuery(collectionName, param1, operator, param2){
     })
     return documents
   } catch (error) {
+    console.log(error)
     throw new Error(error);
   }
 }

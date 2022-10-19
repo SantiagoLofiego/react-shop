@@ -35,7 +35,7 @@ const Account = () => {
           {orders.length<1? <h3>No ha realizado ningun pedido por el momento</h3>:''}
           {orders.map(order =>{
             return (
-              <div key={order.fid} className='d-flex alert alert-success m-4 order'>
+              <div key={order.fid} className='d-flex alert alert-success m-auto mt-2 order'>
                 <div className="p-2 text-start flex-fill">Order ID: {order.fid}</div>
                 <div className="p-2 text-start flex-fill">Fecha de compra: {new Date(order.date.seconds * 1000).toLocaleDateString()}</div>
                 <button onClick={()=>handleClick(order.fid)} className="btn btn-primary">Ver Compra</button>

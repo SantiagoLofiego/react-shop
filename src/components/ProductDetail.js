@@ -55,7 +55,7 @@ const ProductDetail = ({ item }) => {
                             </span>
                             {item.stock > 0 ?
                                 <span className='fw-bolder mt-2'>
-                                    Stock Disponible
+                                    {`Stock Disponible: ${item.stock}`}
                                 </span>
                                 :
                                 <span className='fw-bolder mt-2'>
