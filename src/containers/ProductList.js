@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar';
 import { useProducts } from '../hooks/useProducts';
 import { BsDot } from 'react-icons/bs';
 
-import './productList.css'
+import '../styles/productList.css'
 
 const ProductList = () => {
   const [products, loading] = useProducts();

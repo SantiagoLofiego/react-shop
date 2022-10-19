@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import ProductDetail from '../components/ProductDetail';
-import { doc, getFirestore, getDoc} from 'firebase/firestore/lite';
+import { getDocument } from '../firebase/firestore';
 
 const ProductDetailContainer = () => {
-    const [prod, setProd] = useState([]);
+    const [prod, setProd] = useState({});
     const {id} = useParams();
   
     useEffect(() => {
@@ -12,12 +12,8 @@ const ProductDetailContainer = () => {
       async function getElementById(){
 
         try {
-          const db = getFirestore();
-          const item = doc(db, 'products', id);
-      
-          const response = await getDoc(item);
-          setProd({id: response.id, ...response.data()});
-        
+          const response = await getDocument('products', id);
+          setProd(response); 
         } catch (error) {
           
         }

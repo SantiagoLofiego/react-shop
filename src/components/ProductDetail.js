@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 const ProductDetail = ({ item }) => {
     const [isCount, setIsCount] = useState(false);
     const { cartDispatcher } = React.useContext(AppContext);
-    console.log(item);
     const onAdd = (count) => {
         const qty = count;
         cartDispatcher({ type: 'ADD_TO_CART', payload: item, qty: qty });
@@ -29,7 +28,7 @@ const ProductDetail = ({ item }) => {
                 <Row>
                     <Col md={4}>
                         <InnerImageZoom
-                            src={item.image}
+                            src={item.image || ''}
                             zoomSrc={item.image}
                             fullscreenOnMobile={true}
                         />

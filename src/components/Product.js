@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import './product.css'
+import '../styles/product.css'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { BsCartPlus, BsInfoCircle } from 'react-icons/bs';
@@ -11,7 +11,7 @@ function Product(props) {
   const { cartDispatcher } = React.useContext(AppContext);
   return (
     <Card style={{ width: '18rem' }} className='m-2'>
-      <Card.Img variant="top" src={product.image} />
+      <Card.Img className='imageProd' variant="top" src={product.image} />
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
         <Card.Text>

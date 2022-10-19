@@ -1,5 +1,5 @@
 import React from "react";
-import "../containers/ShoppingCart.css";
+import "../styles/ShoppingCart.css";
 
 const CartItem = ({ prod, cartDispatcher }) => {
   let { image, title, quantity, price } = prod;
