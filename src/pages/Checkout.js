@@ -24,11 +24,6 @@ const Checkout = () => {
     confirm()
   }
 
-  const handleModify = () => {
-    navigate("/account")
-  }
-
-
   return (
     <>
       <h2 className="h2 display-6">Orden de compra</h2>
@@ -39,8 +34,7 @@ const Checkout = () => {
       <h3>Total ${total}</h3>
       { !orderId ?
       <>
-      <button className="btn btn-primary" onClick={handleConfirm}>Confirmar</button>
-      <button className="btn btn-primary" onClick={handleModify}>Modificar</button>
+      <button className="btn btn-primary m-2" onClick={handleConfirm}>Confirmar</button>
       </>
       : ''  
     }

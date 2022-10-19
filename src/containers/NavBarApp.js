@@ -7,6 +7,7 @@ import Alert from 'react-bootstrap/Alert';
 import { LinkContainer } from "react-router-bootstrap";
 import ShoppingCart from "./ShoppingCart";
 import { AppContext } from "../context/AppContext";
+import { NavLink } from "react-router-dom";
 
 function NavBarApp() {
   const { userState, logout } = React.useContext(AppContext)
@@ -30,7 +31,12 @@ function NavBarApp() {
             navbarScroll
           >
             {userState.user.authenticated ?
-              <p className="userMail text-light">{userState.user.email}</p>
+              <p className="userMail text-light">
+                <LinkContainer to="/account">
+                  <NavLink>
+                    {userState.user.email}
+                  </NavLink>
+                </LinkContainer> </p>
               :
               ''
             }

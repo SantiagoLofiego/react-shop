@@ -1,49 +1,52 @@
-import React, { useContext } from "react";
+import { Tab } from "bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Tabs } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { ProductList } from "../containers/ProductList";
 import { AppContext } from "../context/AppContext";
-import { useProducts } from "../hooks/useProducts";
+import { simpleQuery } from "../firebase/firestore";
+
 
 const Account = () => {
-  const [products] = useProducts();
-  const { userState, cartState, cartDispatcher } = useContext(AppContext)
+  const {userState} = useContext(AppContext);
+  const [orders, setOrders] = useState([]);
+  const [error, setError] = useState(null)
   const navigate = useNavigate();
 
-  let total = 0;
-  cartState.cart.forEach((item) => total += (item.quantity * item.price))
-  const handleChekout = () => {
-    navigate("/checkout")
-  }
-  const add = (product) => {
-    cartDispatcher({ type: 'ADD_TO_CART', payload: product })
-  }
-  const remove = (product) => {
-    cartDispatcher({ type: 'REMOVE_FROM_CART', payload: product })
-  }
-  const emptyCart = () => {
-    cartDispatcher({ type: 'EMPTY_CART' })
+  useEffect(()=>{
+    simpleQuery('orders','email','==', userState.user.email)
+    .then(resp => setOrders(resp))
+    .catch(e => setError(e) )
+  },[userState.user.email])
+
+  const handleClick = (id) =>{
+    navigate(`/checkout/${id}`)
   }
 
   return (
     <React.Fragment>
-      <br />
-      <ol>
-        {cartState.cart.map(item => {
-          return <li key={item.fid}>
-            {item.title} cantidad: 
-            <button className="btn btn-primary ml-2" onClick={() => remove(item)}> - </button>
-            {item.quantity}
-            <button className="btn btn-primary ml-2" onClick={() => add(item)}> + </button> precio ${item.price}
-            <h5>subtotal $ {item.price * item.quantity}</h5>
-          </li>
-        })}
-      </ol>
-      {cartState.cart.length > 0 ? <button className="btn btn-danger m-2" onClick={emptyCart}>Vaciar </button> : ''}
-      <h3>TOTAL: ${total}</h3>
-      <br />
-      <button className="btn btn-success m-2" onClick={handleChekout}>Comprar</button>
-      {userState.checking ? <h3>Verificando</h3> : null}
-      <ProductList products={products} />
+      <Tabs
+        defaultActiveKey="orders"
+        id="uncontrolled-tab-example"
+        className="m-5"
+      >
+        <Tab eventKey="orders" title="Orders">
+          <h2 className="h2">Pedidos Realizados</h2>
+          {error? <h4>{error}</h4> : ''}
+          {orders.length<1? <h3>No ha realizado ningun pedido por el momento</h3>:''}
+          {orders.map(order =>{
+            return (
+              <div key={order.fid} className='d-flex alert alert-success m-4 order'>
+                <div className="p-2 text-start flex-fill">Order ID: {order.fid}</div>
+                <div className="p-2 text-start flex-fill">Fecha de compra: {new Date(order.date.seconds * 1000).toLocaleDateString()}</div>
+                <button onClick={()=>handleClick(order.fid)} className="btn btn-primary">Ver Compra</button>
+              </div>
+            )
+          })}
+        </Tab>
+        <Tab eventKey="profile" title="Profile">
+          <h3>Profile Settings</h3>
+        </Tab>
+      </Tabs>
     </React.Fragment>
   )
 }
