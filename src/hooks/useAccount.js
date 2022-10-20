@@ -1,5 +1,5 @@
 import { useReducer, useEffect } from "react";
-import { authlogout, login, register, auth } from "../firebase/firebaseAuth";
+import { authlogout, login, register, auth} from "../firebase/firebaseAuth";
 import { userInitialState, userReducer } from "../reducers/userReducer";
 
 const useAccount = () => {
@@ -56,6 +56,7 @@ const useAccount = () => {
         userDispatcher({ type: 'LOGIN', payload: newUser });
       }
     })
+    
   }, [])
 
   return { userState, loginWithEmailAndPassword, singUp, logout }

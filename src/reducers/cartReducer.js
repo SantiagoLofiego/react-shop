@@ -9,9 +9,12 @@ export const cartReducer = (state, action) => {
 
     case 'REMOVE_FROM_CART':
       return { ...state, cart: removeFromCart(action.payload, state.cart) };
-    
+
     case 'EMPTY_CART':
       return cartInitialState;
+
+    case 'REMOVE_ALL':
+      return { ...state, cart: removeAll(action.payload, state.cart) }
 
     default:
       return state;
@@ -20,6 +23,9 @@ export const cartReducer = (state, action) => {
 }
 
 const addToCart = (product, cart, qty) => {
+  if (product.stock < 1) {
+    return cart
+  }
   const stock = product.stock;
   const productToAdd = {
     fid: product.fid,
@@ -55,4 +61,9 @@ const removeFromCart = (product, cart) => {
     return newCart
   }
 
+}
+
+const removeAll = (product, cart)=>{
+  const newCart = cart.filter(prod => prod.fid !== product.fid)
+  return newCart;
 }

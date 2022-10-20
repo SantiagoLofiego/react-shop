@@ -13,7 +13,7 @@ const ProductDetailContainer = () => {
 
         try {
           const response = await getDocument('products', id);
-          setProd(response); 
+          setProd({...response,fid:id}); 
         } catch (error) {
           
         }

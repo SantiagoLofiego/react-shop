@@ -1,6 +1,6 @@
 .containerCart {
     position: absolute;
-    top: 0;
+    top: 60px;
     z-index: 3;
     width: 500px;
     min-height: 500px;

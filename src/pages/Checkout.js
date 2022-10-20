@@ -40,7 +40,7 @@ const Checkout = () => {
           <button hidden={disabled} className="btn btn-primary m-2" onClick={handleConfirm}>Confirmar</button>
           {disabled?<Button variant="primary" disabled>
             <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
-            Loading...
+            Procesando
           </Button>
           :''}
         </>

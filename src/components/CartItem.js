@@ -13,7 +13,7 @@ const CartItem = ({ prod, cartDispatcher }) => {
         <span
           className="x closetCart"
           title="Eliminar todos"
-          onClick={() => alert("se elimina este bloque...")}
+          onClick={() => cartDispatcher({type:'REMOVE_ALL', payload:prod})}
         >
           X
         </span>
