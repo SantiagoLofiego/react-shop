@@ -1,5 +1,5 @@
 import { useReducer, useEffect } from "react";
-import { authlogout, login, register, auth} from "../firebase/firebaseAuth";
+import { authlogout, login, register, auth, updateUser} from "../firebase/firebaseAuth";
 import { userInitialState, userReducer } from "../reducers/userReducer";
 
 const useAccount = () => {
@@ -8,7 +8,7 @@ const useAccount = () => {
   const loginWithEmailAndPassword = (email, password) => {
     userDispatcher({ type: 'CHECKING', payload: true })
     login(email, password)
-      .then(({ ok, uid, displayName, errorMessage }) => {
+      .then(({ ok, uid, displayName, errorMessage, photoURL, phone }) => {
         let newUser = {}
         if (ok) {
           newUser = {
@@ -16,6 +16,8 @@ const useAccount = () => {
             uid,
             email,
             displayName,
+            photoURL,
+            phone
           }
           userDispatcher({ type: 'LOGIN', payload: newUser });
         } else {
@@ -47,11 +49,14 @@ const useAccount = () => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log(user)
         const newUser = {
           authenticated: true,
           uid: user.uid,
           email: user.email,
-          displayName: user.displayName
+          displayName: user.displayName,
+          photoURL:user.photoURL,
+          phone: user.phoneNumber
         }
         userDispatcher({ type: 'LOGIN', payload: newUser });
       }

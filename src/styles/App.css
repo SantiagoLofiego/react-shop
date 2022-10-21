@@ -40,3 +40,37 @@
 .order{
   min-width: 450px;
 }
+
+.profile-pic{
+  text-align: left;
+}
+
+.profile-default-pic{
+  width: 250px;
+  height: 250px;
+  color: white;
+  font-size: 100rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.2);
+}
+
+.profile-pic img{
+  max-width: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .profile-default-pic{
+    width: 150px;
+    height: 150px;
+    padding: 25px;
+  }
+  .profile-pic img {
+    max-width: 150px;
+  }
+}

@@ -52,14 +52,12 @@ async function simpleQuery(collectionName, param1, operator, param2, orderby){
     const collectionRef = collection(db,collectionName);
     const q = query(collectionRef, where(param1,operator,param2),orderBy(orderby,'desc'));
     const data = await getDocs(q);
-    console.log(data)
     data.forEach((doc) => {
       const newDocument = { ...doc.data(), fid: doc.id };
       documents.push(newDocument);
     })
     return documents
   } catch (error) {
-    console.log(error)
     throw new Error(error);
   }
 }

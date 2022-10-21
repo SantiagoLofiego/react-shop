@@ -20,7 +20,7 @@ const login = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
         const user = userCredential.user
-        return { ok: true, uid: user.uid, email, displayName: user.displayName }
+        return { ok: true, uid: user.uid, email, displayName: user.displayName, photoURL: user.photoURL, phone: user.phoneNumber }
       })
       .catch(error => {
         return { ok: false, errorMessage: error.message }
@@ -36,13 +36,12 @@ const authlogout = () => {
     .catch(error => console.log('error'))
 }
 
-const updateUser = () => {
-  updateProfile(auth.currentUser, { displayName: "Santi", photoURL: "https://example.com/jane-q-user/profile.jpg", alias: 'cuco' })
+const updateUser = (data) => {
+  updateProfile(auth.currentUser, data)
     .then((resp) => {
       console.log(resp)
     }).catch((error) => {
       console.log(error)
     });
-  }
-
-  export { register, login, authlogout, auth, updateUser }
+}
+export { register, login, authlogout, auth, updateUser }

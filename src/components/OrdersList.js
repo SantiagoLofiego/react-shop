@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Pagination } from 'react-bootstrap';
+import { Pagination, Spinner } from 'react-bootstrap';
 
-const OrdersList = ({ handleClick, error, orders }) => {
+const OrdersList = ({ handleClick, error, orders, loading }) => {
   const [pagOrders, setPageOrders] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [pages, setPages] = useState([]);
 
   useEffect(() => {
-    const maxItems = 3;
+    const maxItems = 5;
     const pagesCount = Math.ceil((orders.length / maxItems));
     const newPages = []
     for (let i = 1; i <= pagesCount; i++) {
@@ -23,7 +23,8 @@ const OrdersList = ({ handleClick, error, orders }) => {
     <div className='container'>
       <h2 className="h2">Pedidos Realizados</h2>
       {error ? <h4>{error}</h4> : ''}
-      {orders.length < 1 ? <h3>No ha realizado ningun pedido por el momento</h3> : ''}
+      {orders.length < 1 && !loading? <h3 className='h3'>No ha realizado ningun pedido por el momento</h3> : ''}
+      {loading? <Spinner animation="border" variant="primary" />:null}
       <div className='p-2 mx-auto mw'>
         {pagOrders.map(order => {
           return (
