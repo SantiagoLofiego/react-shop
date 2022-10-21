@@ -25,11 +25,12 @@ const MainCarousel = () => {
         return () => {
             window.removeEventListener('resize', handleWindowResize);
         };
-    }, []);
+    }, [products]);
 
 
     return (
         <Carousel className='m-2 shadow-sm p-3 mb-5 bg-body rounded' style={windowSize > 750 ? { height: "400px" } : { height: "255px" }}>
+            {loading ? <h2>Cargando...</h2> : null}
             <Carousel.Item key={"slide_" + firstSlide.id} className='h-75'>
                     <img
                         height={windowSize > 750 ? "345px" : "200px"}
