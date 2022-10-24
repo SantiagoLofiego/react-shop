@@ -1,3 +1,7 @@
 #form-count{
-    width: 7.5rem !important;
+    width: 9rem !important;
+}
+
+#countInput{
+  text-align: center;
 }

@@ -8,6 +8,7 @@ import '../styles/App.css';
 import NavBarApp from '../containers/NavBarApp';
 import Layout from '../containers/Layout';
 import ProductDetailContainer from '../containers/ProductDetailContainer';
+import { Checkout } from '../pages/Checkout';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
             <ProductDetailContainer />
           }
         />
+        <Route path='/checkout/:id' element={<Checkout />} />
+        <Route path='/checkout' element={<Checkout />} />
         <Route path='/login' element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

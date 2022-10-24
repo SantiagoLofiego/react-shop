@@ -4,8 +4,14 @@ import CartEmpty from "./CartEmpty";
 import CartTotal from "./CartTotal";
 import Button from "react-bootstrap/Button";
 import "../styles/ShoppingCart.css";
+import { useNavigate } from "react-router-dom";
 
 const CartList = (props) => {
+  const navigate = useNavigate();
+  const handleConfirm = () => {
+    props.setActiveCart(!props.isActiveCart)
+    navigate("/checkout")
+  }
   return (
     <div className="containerCart">
       <div className="cartHeader w-100 h-100">
@@ -30,7 +36,7 @@ const CartList = (props) => {
             );
           })}
           <CartTotal total={props.total} productLength={props.productLength} />
-          <Button className="mb-3" variant="primary" title="Confirma tu compra">
+          <Button onClick={handleConfirm} className="mb-3" variant="primary" title="Confirma tu compra">
             Confirmar compra
           </Button>
         </div>

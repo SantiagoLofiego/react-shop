@@ -1,0 +1,39 @@
+.order-item-img{
+  max-width: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.order-item{
+  margin: 0 auto;
+  margin-top: 10px;
+  max-width: 700px;
+  padding: 5px 15px;
+}
+
+.order-item-title{
+  padding-bottom: 5px;
+  text-align: start;
+  margin: 0;
+}
+
+.order-item-body{
+  display: flex;
+}
+
+.order-item-details{
+  text-align: start;
+  align-self: center;
+}
+
+.order-item-subtotal{
+  text-align: right;
+  margin: 0px;
+}
+
+.order-id{
+  margin: 0 auto;
+  max-width: 700px;
+}

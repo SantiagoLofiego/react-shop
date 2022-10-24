@@ -21,7 +21,7 @@ const ProductDetail = ({ item }) => {
     return (
         <div>
             <Breadcrumb className='container mt-2'>
-                <Breadcrumb.Item href="/" className='text-decoration-none'>Volver al listado</Breadcrumb.Item>
+                <Breadcrumb.Item className='text-decoration-none'><Link to={'/'}>Volver al listado</Link></Breadcrumb.Item>
                 <Breadcrumb.Item active>{item.title}</Breadcrumb.Item>
             </Breadcrumb>
             <div className='container mt-3 shadow-sm p-3 mb-5 bg-body rounded'>
@@ -55,7 +55,7 @@ const ProductDetail = ({ item }) => {
                             </span>
                             {item.stock > 0 ?
                                 <span className='fw-bolder mt-2'>
-                                    Stock Disponible
+                                    {`Stock Disponible: ${item.stock}`}
                                 </span>
                                 :
                                 <span className='fw-bolder mt-2'>
