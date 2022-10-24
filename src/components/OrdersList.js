@@ -28,7 +28,7 @@ const OrdersList = ({ handleClick, error, orders, loading }) => {
       <div className='p-2 mx-auto mw'>
         {pagOrders.map(order => {
           return (
-            <div key={order.fid} className='d-flex alert alert-success m-auto mt-2 order'>
+            <div key={order.fid} className='d-flex flex-wrap alert alert-success m-auto mt-2 order'>
               <div className="p-2 text-start flex-fill">Order ID: {order.fid}</div>
               <div className="p-2 text-start flex-fill">Fecha de compra: {new Date(order.date.seconds * 1000).toLocaleDateString()}</div>
               <button onClick={() => handleClick(order.fid)} className="btn btn-primary">Ver Compra</button>

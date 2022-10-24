@@ -32,20 +32,23 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.order{
-  min-width: 450px;
+.order {
+  min-width: 350px;
 }
 
-.profile-pic{
+.profile-pic {
   text-align: left;
+  position: relative;
+  height: 250px;
 }
 
-.profile-default-pic{
+.profile-default-pic {
   width: 250px;
   height: 250px;
   color: white;
@@ -57,20 +60,62 @@
   box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.2);
 }
 
-.profile-pic img{
-  max-width: 250px;
+.profile-pic img {
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 3px 3px 15px 1px rgba(0, 0, 0, 0.2);
 }
 
+#photo-upload-btn {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  border-radius: 50%;
+  color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+#photo-upload-btn:hover {
+  box-shadow: 5px 5px 5px 5px whitesmoke;
+}
+
+.edit-btn {
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  border: none;
+  font-size: 1.5rem;
+}
+
+
 @media (max-width: 600px) {
-  .profile-default-pic{
+  .profile-default-pic {
     width: 150px;
     height: 150px;
     padding: 25px;
   }
+
   .profile-pic img {
-    max-width: 150px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-pic {
+    height: 150px;
+  }
+
+  #photo-upload-btn {
+    right: -10px;
   }
 }

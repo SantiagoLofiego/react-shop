@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc, doc, updateDoc, getDoc, query, where, orderBy } from "firebase/firestore";
+import { collection, getDocs, addDoc, doc, updateDoc, getDoc, query, where, orderBy, setDoc } from "firebase/firestore";
 import { db } from "./firebaseConfig";
 
 async function getAllDocuments(collectionName) {
@@ -16,10 +16,15 @@ async function getAllDocuments(collectionName) {
   }
 }
 
-async function addDocument(collectionName, data) {
+async function addDocument(collectionName, data, id) {
   try {
-    const ref = collection(db, collectionName);
-    const response = await addDoc(ref, data);
+    let response;
+    if(!id){
+      const ref = collection(db, collectionName);
+      response = await addDoc(ref, data);
+    }else{
+      response = await setDoc(doc(db, collectionName, id), data)
+    }
     return response
   } catch (error) {
     throw new Error(error.message);
@@ -40,7 +45,7 @@ async function updateDocument(collectionName, docID, data){
   try {
     const ref = doc(db,collectionName,docID);
     await updateDoc(ref,data);
-    return `Document ${docID} updated`
+    return `Document ${'docID'} updated`
   } catch (error) {
     throw new Error(error.message);
   }

@@ -60,6 +60,7 @@ const useOrder = (cart, user, cartDispatcher, orderID) => {
     if (!updated) {
       setError('Hubo un problema con su compra');
       setStatus(null);
+      return
     }
     const orderRef = await addOrder(resultOrder, user);
     setOrderID(orderRef.id);
@@ -103,7 +104,7 @@ const useOrder = (cart, user, cartDispatcher, orderID) => {
 
   const updateProductStock = async (orderItem) => {
     const newStock = orderItem.stock - orderItem.quantity;
-    const data = { stock: newStock }
+    const data = { stock: newStock}
     try {
       await updateDocument('products', orderItem.fid, data)
       return true
@@ -119,7 +120,7 @@ const useOrder = (cart, user, cartDispatcher, orderID) => {
     }
     const responses = await Promise.all(updatePromises);
     for (const response of responses) {
-      if (!response) {
+      if (response !== true) {
         return false
       }
     }

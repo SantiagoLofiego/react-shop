@@ -18,6 +18,8 @@ function Product(props) {
           {product.shortDescription}
           <br></br>
           {`Stock: ${product.stock}`}
+          <br />
+          {`$ ${product.price}`}
         </Card.Text>
         <Button variant="primary" onClick={() => cartDispatcher({ type: 'ADD_TO_CART', payload: product })} className='me-1'>
           <BsCartPlus /> Agregar

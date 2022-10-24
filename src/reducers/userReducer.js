@@ -18,6 +18,10 @@ export const userReducer = (state, action) => {
 
       return {...userInitialState}
     }
+    case 'UPDATE': {
+
+      return {...state, user:{...state.user, ...action.payload} }
+    }
     case 'CHECKING':
       return { ...state, checking: action.payload }
     case 'ERROR':

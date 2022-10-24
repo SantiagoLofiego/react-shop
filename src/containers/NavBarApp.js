@@ -21,9 +21,11 @@ function NavBarApp() {
   return (
     <Navbar expand="lg" bg="dark" variant="dark" className="">
       <Container fluid className=" p-1">
-        <Navbar.Brand href="#" className="mx-lg-5">
-          <h3>Shop</h3>
-        </Navbar.Brand>
+        <LinkContainer to="/">
+          <Navbar.Brand href="#" className="mx-lg-5">
+            <h3 className="m-0">Shop</h3>
+          </Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
