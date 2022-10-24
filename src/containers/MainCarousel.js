@@ -15,7 +15,7 @@ const MainCarousel = () => {
 
   useEffect(() => {
     setFilterProdAv(products.filter(prod => prod.stock > 5));
-    setFilterProdLim(products.filter(prod => prod.stock <= 5));
+    setFilterProdLim(products.filter(prod => prod.stock <= 5 && prod.stock > 0));
 
     function handleWindowResize() {
       setWindowSize(window.innerWidth);
