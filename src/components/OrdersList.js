@@ -20,7 +20,7 @@ const OrdersList = ({ handleClick, error, orders, loading }) => {
   }, [activePage, orders])
 
   return (
-    <div className='container'>
+    <div className='order-list mt-3'>
       <h2 className="h2">Pedidos Realizados</h2>
       {error ? <h4>{error}</h4> : ''}
       {orders.length < 1 && !loading? <h3 className='h3'>No ha realizado ningun pedido por el momento</h3> : ''}

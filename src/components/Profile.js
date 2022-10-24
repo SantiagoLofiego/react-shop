@@ -43,7 +43,7 @@ const Profile = ({ userState, updateUser }) => {
   }
 
   return (
-    <div className=' m-5 d-flex flex-wrap'>
+    <div className=' mt-5 d-flex flex-wrap'>
       <div className='profile-pic me-5'>
         {user.photoURL
           ? <img src={user.photoURL} alt="" />
