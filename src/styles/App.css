@@ -2,39 +2,58 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loadingSpinner {
+  height: calc(100vh - 65px);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-container {
+  height: 65px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-icons svg {
+  font-size: 30px;
+}
+
+.nav-icons a {
+  font-size: 1.2rem;
+}
+
+.nav-user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  font-size: 30px;
+}
+
+.nav-user-icon:hover{
   color: white;
+  background-color: #0d6efd;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-user-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-email {
+  color: aliceblue;
+}
+
+@media (max-width: 600px) {
+  .nav-email {
+    display: none;
   }
+}
 
-  to {
-    transform: rotate(360deg);
+@media (max-width: 400px) {
+  .nav-btn-home {
+    display: none;
   }
 }
 
@@ -76,10 +95,13 @@
   height: 50px;
   width: 50px;
   cursor: pointer;
+  background-color: #212529;
 }
 
 #photo-upload-btn:hover {
+  background-color: darkgray;
   box-shadow: 5px 5px 5px 5px whitesmoke;
+  color: #212529;
 }
 
 .edit-btn {
@@ -87,13 +109,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   cursor: pointer;
   border: none;
-  font-size: 1.5rem;
+  font-size: 30px;
 }
 
+.edit-btn:hover {
+  background-color: darkgrey;
+}
 
 @media (max-width: 600px) {
   .profile-default-pic {

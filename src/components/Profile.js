@@ -51,7 +51,7 @@ const Profile = ({ userState, updateUser }) => {
             <FaUser />
           </div>
         }
-        <div id='photo-upload-btn' className='bg-dark' onClick={handleUploadBtn}>
+        <div id='photo-upload-btn' onClick={handleUploadBtn}>
           {uploading ? <Spinner animation="grow" variant="light" /> : <FaCamera />}
         </div>
       </div>
@@ -62,7 +62,7 @@ const Profile = ({ userState, updateUser }) => {
         <h3 className='h3'>Dirección: {user.address}</h3>
         <h3 className='h3'>Ciudad: {user.city}</h3>
         <input hidden={true} ref={inputFile} type="file" name="photo" id="photo" title='subir foto' onChange={handleUpload} />
-        <button className='edit-btn' onClick={handleEdit}><FaEdit /></button>
+        <div className='edit-btn' onClick={handleEdit}><FaEdit /></div>
       </div>
       <div className='profile-form flex-grow-1' hidden={!edit}>
         <form ref={formData} className='text-start'>

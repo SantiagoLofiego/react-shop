@@ -5,11 +5,11 @@ const CartItem = ({ prod, cartDispatcher }) => {
   let { image, title, quantity, price } = prod;
   return (
     <div className="productDetail">
-      <div className="divImg">
+      <div className="divImg mx-md-3 mx-1">
         <img src={image} alt="nutella" />
       </div>
-      <h4 className="mx-3">{title}</h4>
-      <div className="cantSubTotal">
+      <h4 className="mx-md-3 mx-1">{title}</h4>
+      <div className="cantSubTotal mx-md-3 mx-1">
         <span
           className="x closetCart"
           title="Eliminar todos"

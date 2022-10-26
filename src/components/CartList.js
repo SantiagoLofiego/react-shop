@@ -13,7 +13,7 @@ const CartList = (props) => {
     navigate("/checkout")
   }
   return (
-    <div className="containerCart">
+    <div className={ !props.isActiveCart? 'containerCart': 'containerCart max-test'}>
       <div className="cartHeader w-100 h-100">
         <h3>Detalle Carrito</h3>
         <h2

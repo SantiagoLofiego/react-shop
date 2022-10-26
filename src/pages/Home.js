@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { LoadingSpinner } from '../components/LoadingSpinner';
 import { MainCarousel } from '../containers/MainCarousel';
 import { ProductList } from '../containers/ProductList';
+import { useProducts } from '../hooks/useProducts'
 
 const Home = () => {
+  const[products,loading] = useProducts();
   return (
     <React.Fragment>
-      <MainCarousel />
-      <ProductList />
+      {loading
+        ? <LoadingSpinner></LoadingSpinner>
+        : <>
+          <MainCarousel />
+          <ProductList />
+        </>
+      }
     </React.Fragment>
   );
 }

@@ -27,7 +27,7 @@ const ShopingCart = () => {
     <>
       <Button
         className="d-flex justify-content-center aling-items-center "
-        variant="outline-primary px-4 me-lg-3"
+        variant="outline-primary px-4 me-lg-3 mx-1"
         onClick={() => setActiveCart(!isActiveCart)}
       >
         <div className="position-relative">
@@ -35,7 +35,7 @@ const ShopingCart = () => {
           <FaShoppingCart className="faShoppingCart" />
         </div>
       </Button>
-      {isActiveCart && (
+      {true && (
         <CartList
           cart={cart}
           cartDispatcher={cartDispatcher}
