@@ -1,4 +1,5 @@
 import React from "react";
+import { BsDashCircleFill, BsPlusCircleFill, BsTrashFill } from "react-icons/bs";
 import "../styles/ShoppingCart.css";
 
 const CartItem = ({ prod, cartDispatcher }) => {
@@ -15,7 +16,7 @@ const CartItem = ({ prod, cartDispatcher }) => {
           title="Eliminar todos"
           onClick={() => cartDispatcher({type:'REMOVE_ALL', payload:prod})}
         >
-          X
+          <BsTrashFill />
         </span>
         <div>
           <div className="counterpropsucts">
@@ -33,7 +34,7 @@ const CartItem = ({ prod, cartDispatcher }) => {
                   })
                 }
               >
-                +
+                <BsPlusCircleFill />
               </span>
               <span
                 title="Eliminar uno"
@@ -45,12 +46,12 @@ const CartItem = ({ prod, cartDispatcher }) => {
                   })
                 }
               >
-                -
+                <BsDashCircleFill />
               </span>
             </div>
           </div>
         </div>
-        <div>precio: {price}</div>
+        <div>Precio: {price}</div>
         <div>
           x {quantity} = {price * quantity}
         </div>

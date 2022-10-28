@@ -5,6 +5,8 @@ import CartTotal from "./CartTotal";
 import Button from "react-bootstrap/Button";
 import "../styles/ShoppingCart.css";
 import { useNavigate } from "react-router-dom";
+import { BsFillXCircleFill } from "react-icons/bs";
+
 
 const CartList = (props) => {
   const navigate = useNavigate();
@@ -21,7 +23,7 @@ const CartList = (props) => {
           title="Cerrar"
           onClick={() => props.setActiveCart(!props.isActiveCart)}
         >
-          X
+         <BsFillXCircleFill />
         </h2>
       </div>
       {props.cart.length > 0 ? (

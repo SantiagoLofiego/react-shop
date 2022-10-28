@@ -17,7 +17,7 @@ function Product(props) {
   }, [product])
 
   return (
-    <Card style={{ width: '18rem' }} className='m-2'>
+    <Card style={{ width: '18rem' }} className='m-2 cardShaddow'>
       <Card.Img className='imageProd' variant="top" src={product.image} />
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
@@ -36,11 +36,11 @@ function Product(props) {
           <br />
           {`$ ${product.price}`}
         </Card.Text>
-        <Button id={`btnAdd_` + product.id} variant="primary" onClick={() => cartDispatcher({ type: 'ADD_TO_CART', payload: product })} className='me-1'>
+        <Button id={`btnAdd_` + product.id} variant="primary" onClick={() => cartDispatcher({ type: 'ADD_TO_CART', payload: product })} className='me-1 buttonBG buttonBG-1'>
           <BsCartPlus /> Agregar
         </Button>
         <Link to={`/item/${product.fid}`} className="text-decoration-none ms-1">
-          <Button variant="primary">
+          <Button variant="primary" className='buttonBG buttonBG-1'>
             <BsInfoCircle /> Detalle
           </Button>
         </Link>
