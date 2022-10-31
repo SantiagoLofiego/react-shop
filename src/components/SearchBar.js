@@ -6,7 +6,8 @@ import { BsSearch } from 'react-icons/bs';
 const SearchBar = ({ searchValue, setSearchValue }) => {
 
   const onSearchValueChange = (event) => {
-    setSearchValue(event.target.value);
+    setTimeout(()=>{setSearchValue(event.target.value);},1000)
+    
   }
 
   return (

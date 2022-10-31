@@ -5,7 +5,7 @@ import { ProductList } from '../containers/ProductList';
 import { useProducts } from '../hooks/useProducts'
 
 const Home = () => {
-  const[products,loading] = useProducts();
+  const{loading} = useProducts();
   return (
     <React.Fragment>
       {loading

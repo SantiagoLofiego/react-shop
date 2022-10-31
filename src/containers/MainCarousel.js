@@ -5,7 +5,7 @@ import { useProducts } from '../hooks/useProducts';
 
 const MainCarousel = () => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const [products] = useProducts();
+  const {products} = useProducts();
   const [filterProdAv, setFilterProdAv] = useState([]);
   const [filterProdLim, setFilterProdLim] = useState([]);
   const firstSlide = {

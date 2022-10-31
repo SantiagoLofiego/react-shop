@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Spinner } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import { useMountAnimation} from "../hooks/useMountAnimation"
 import { OrderItem } from "../components/OrderItem";
 import { AppContext } from "../context/AppContext";
 import { useOrder } from "../hooks/useOrder";
@@ -11,6 +12,8 @@ const Checkout = () => {
   const { cartState, userState, cartDispatcher } = useContext(AppContext);
   const [disabled, setDisabled] = useState(false);
   const { order, status, error, orderId, confirm } = useOrder(cartState.cart, userState.user, cartDispatcher, id);
+  const animated = useMountAnimation('anim-translateXstart', 'anim-translateXend');
+  
   const navigate = useNavigate();
   const total = order.reduce(
     (previous, current) => previous + current.quantity * current.price,
@@ -28,7 +31,7 @@ const Checkout = () => {
   }
 
   return (
-    <>
+    <div className={animated}>
       <h2 className="h2 display-6">Orden de compra</h2>
       {status ? <h3>{status}</h3>: ''}
       {orderId ? <h3 className="alert alert-success order-id">ID : {orderId}</h3> : ''}
@@ -47,7 +50,7 @@ const Checkout = () => {
         : ''
       }
 
-    </>
+    </div>
   )
 }
 

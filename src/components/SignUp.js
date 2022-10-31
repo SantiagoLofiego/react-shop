@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Button, Spinner } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext'
+import { useMountAnimation } from '../hooks/useMountAnimation';
 
 const SignUp = ({ changeAuthMode }) => {
   const navigate = useNavigate();
-
+  const animated = useMountAnimation('anim-fade-start', 'anim-fade-end');
   const { userState, singUp } = React.useContext(AppContext)
 
   const handleSubmit = (e) => {
@@ -34,7 +35,7 @@ const SignUp = ({ changeAuthMode }) => {
 
   return (
     <div className="Auth-form-container">
-      <form className="Auth-form" onSubmit={handleSubmit}>
+      <form className={`Auth-form ${animated}`} onSubmit={handleSubmit}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Registro</h3>
           <div className="text-center">

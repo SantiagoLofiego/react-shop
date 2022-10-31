@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   max-width: 100vw;
+  overflow: hidden;
 }
 
 .loading-spinner-container {
@@ -162,6 +163,7 @@
 .anim-expandStart{
   flex-basis: 0px;
   max-width: 0px;
+  transition: all 0.5s ease;
   overflow: hidden;
 }
 
@@ -182,4 +184,14 @@
   transform: translate(0px, 0px);
   opacity: 1;
   transition: all 0.5s ease;
+}
+
+.anim-fade-start{
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.anim-fade-end{
+  opacity: 1;
+  transition: all 1s ease;
 }

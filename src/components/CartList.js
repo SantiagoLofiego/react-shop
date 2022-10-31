@@ -18,7 +18,7 @@ const CartList = ({cart, isActiveCart, setActiveCart, cartDispatcher, productLen
 
 
   useEffect(()=>{
-    setCss('anim-toggle-cart-end')
+    setTimeout(()=>{setCss('anim-toggle-cart-end')},50)
   },[setCss])
 
   return (

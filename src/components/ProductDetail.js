@@ -8,10 +8,12 @@ import '../styles/ProductDetail.css'
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
 import { AppContext } from '../context/AppContext';
 import { Link } from 'react-router-dom';
+import { useMountAnimation } from '../hooks/useMountAnimation';
 
 const ProductDetail = ({ item }) => {
   const [isCount, setIsCount] = useState(false);
   const { cartDispatcher } = React.useContext(AppContext);
+  const animated = useMountAnimation('anim-translateXstart', 'anim-translateXend');
   const onAdd = (count) => {
     const qty = count;
     cartDispatcher({ type: 'ADD_TO_CART', payload: item, qty: qty });
@@ -19,7 +21,7 @@ const ProductDetail = ({ item }) => {
   }
 
   return (
-    <div>
+    <div className={animated}>
       <Breadcrumb className='container mt-2'>
         <Link to={'/'}>Volver al listado</Link>
         <Breadcrumb.Item active>{` / ${item.title}`}</Breadcrumb.Item>

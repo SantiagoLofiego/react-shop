@@ -3,13 +3,14 @@ import Product from '../components/Product'
 import SearchBar from '../components/SearchBar';
 import { useProducts } from '../hooks/useProducts';
 import { BsDot } from 'react-icons/bs';
-
 import '../styles/productList.css'
+import { useMountAnimation } from '../hooks/useMountAnimation';
 
 const ProductList = () => {
-  const [products, loading] = useProducts();
+  const { products } = useProducts();
   const [searchValue, setSearchValue] = useState('');
   const glassPic = 'https://firebasestorage.googleapis.com/v0/b/react-shop-90ad9.appspot.com/o/qwe%2Flupa.png?alt=media&token=46bf6032-f61b-4b0b-a601-c81cc8fdaa42';
+  const animated = useMountAnimation('anim-fade-start', 'anim-fade-end');
 
   let searchedProducts = [];
   if (!searchValue.length >= 1) {
@@ -25,9 +26,8 @@ const ProductList = () => {
   }
 
   return (
-    <>
+    <div className={animated}>
       <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
-      {loading ? <h2>Cargando...</h2> : null}
       <div className="productsList">
         {searchedProducts.length > 0 ?
           searchedProducts.map((prod, index) => {
@@ -49,7 +49,7 @@ const ProductList = () => {
           </div>
         }
       </div>
-    </>
+    </div>
   );
 }
 
