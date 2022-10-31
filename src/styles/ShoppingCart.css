@@ -3,14 +3,17 @@
   top: 65px;
   z-index: 3;
   width: 450px;
-  background-color: rgb(33, 37, 41);
+  /* background-color: rgb(33, 37, 41); */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.315) 0%, rgba(0, 0, 0, 0.418) 100%), radial-gradient(at top center, rgba(199, 199, 199, 0.562) 0%, rgba(0, 0, 0, 0.521) 120%) #989898;
+  background-blend-mode: multiply, multiply;
   color: white;
   right: 0;
   overflow-y: auto;
   max-height: calc(100vh - 65px);
 }
 
-.max-test{
+
+.max-test {
   max-height: calc(100vh - 65px);
 }
 
@@ -81,6 +84,9 @@
   overflow: hidden;
   
   align-self: center;
+
+  box-shadow: rgba(255, 255, 255, 0.616) 0px 1px 6px, rgba(0, 0, 0, 0.555) 0px 7px 13px -3px, rgba(0, 0, 0, 0.425) 0px -3px 0px inset;
+  border: 1px solid #000000;
 }
 
 .divImg>img {
@@ -95,6 +101,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 110px;
 }
 
 .simbMas,

@@ -5,6 +5,8 @@ import CartTotal from "./CartTotal";
 import Button from "react-bootstrap/Button";
 import "../styles/ShoppingCart.css";
 import { useNavigate } from "react-router-dom";
+import { BsFillXCircleFill } from "react-icons/bs";
+
 import { useEffect } from "react";
 
 const CartList = ({cart, isActiveCart, setActiveCart, cartDispatcher, productLength, total, handleToggleCart, css, setCss}) => {
@@ -32,7 +34,7 @@ const CartList = ({cart, isActiveCart, setActiveCart, cartDispatcher, productLen
           title="Cerrar"
           onClick={() => handleToggleCart()}
         >
-          X
+         <BsFillXCircleFill />
         </h2>
       </div>
       {cart.length > 0 ? (

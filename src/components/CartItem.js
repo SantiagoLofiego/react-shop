@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaRegTrashAlt } from 'react-icons/fa'
+import { BsDashCircleFill, BsPlusCircleFill, BsTrashFill } from "react-icons/bs";
 import "../styles/ShoppingCart.css";
 
 const CartItem = ({ prod, cartDispatcher }) => {
@@ -21,9 +22,9 @@ const CartItem = ({ prod, cartDispatcher }) => {
         </div>
         <div className="cantSubTotal mx-md-3 mx-1">
           <div className="p-1 d-flex">
-            <button
+            <span
               title="Quitar"
-              className="simbMenos py-2 px-3 btn btn-dark"
+              className="simbMenos py-2 px-3 "
               onClick={() =>
                 cartDispatcher({
                   type: "REMOVE_FROM_CART",
@@ -31,14 +32,14 @@ const CartItem = ({ prod, cartDispatcher }) => {
                 })
               }
             >
-              -
-            </button>
+              <BsDashCircleFill />
+            </span>
             <h4 className="m-0 d-inline align-self-center" title="Cantidad de propsuctos">
               {quantity}
             </h4>
-            <button
+            <span
               title="Agregar"
-              className="simbMas py-2 px-3 btn btn-dark"
+              className="simbMas py-2 px-3 "
               disabled={addDisabled}
               onClick={() =>
                 cartDispatcher({
@@ -47,8 +48,8 @@ const CartItem = ({ prod, cartDispatcher }) => {
                 })
               }
             >
-              +
-            </button>
+              <BsPlusCircleFill />
+            </span>
           </div>
           <div>
             Precio: {price}
