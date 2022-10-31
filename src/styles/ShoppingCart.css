@@ -2,13 +2,12 @@
   position: absolute;
   top: 65px;
   z-index: 3;
-  width: 500px;
+  width: 450px;
   background-color: rgb(33, 37, 41);
   color: white;
   right: 0;
-  overflow: scroll;
-  max-height: 0px;
-  transition: max-height 0.5s ease;
+  overflow-y: auto;
+  max-height: calc(100vh - 65px);
 }
 
 .max-test{
@@ -19,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   padding-right: 15px;
-  background-color: #f3b56f;
+  background-color: #0d6efd;
   min-height: 3rem;
 }
 
@@ -32,7 +31,6 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  align-items: center;
   min-height: 8rem;
   border-bottom: 3px solid rgb(207, 201, 201);
   margin: 3px;
@@ -42,7 +40,12 @@
   padding-left: 1.5rem;
 }
 
-.closetCart,
+.closetCart{
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+}
 .simbMas,
 .simbMenos {
   cursor: pointer;
@@ -76,6 +79,8 @@
   width: 90px;
   border-radius: 10%;
   overflow: hidden;
+  
+  align-self: center;
 }
 
 .divImg>img {
@@ -126,7 +131,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .containerCart {
     width: 100%;
     margin: 0;

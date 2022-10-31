@@ -10,17 +10,18 @@ import { MdOutlineLogout, MdHome } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa"
 
 function NavBarApp() {
-  const { userState, logout } = React.useContext(AppContext)
+  const { userState, logout, cartDispatcher } = React.useContext(AppContext)
   const [showAlertSession, setShowAlertSession] = useState(false);
 
   const handleLogout = () => {
     setShowAlertSession(true);
+    cartDispatcher({type: 'EMPTY_CART'})
     logout();
   }
 
   return (
     <>
-      <Navbar sticky="top" variant="dark" className="d-flex align-items-center bg-dark py-2 navbar-container">
+      <Navbar sticky="top" variant="dark" className="d-flex align-items-center bg-dark py-2 navbar-container ">
         <LinkContainer className="text-decoration-none" to={'/'}>
           <LinkContainer to="/">
             <Navbar.Brand href="#" className="mx-lg-5 mx-1">
@@ -28,7 +29,7 @@ function NavBarApp() {
             </Navbar.Brand>
           </LinkContainer>
         </LinkContainer>
-        <div class="flex-grow-1"></div>
+        <div className="flex-grow-1"></div>
         <div className='d-flex justify-content-end align-items-center nav-icons'>
           <LinkContainer to="/">
             <Button variant="outline-primary" className="btn btn-outline-primary my-2 mx-lg-3 mx-1 nav-btn-home"><MdHome /></Button>

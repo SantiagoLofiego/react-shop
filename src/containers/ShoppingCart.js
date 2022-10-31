@@ -5,12 +5,24 @@ import { AppContext } from "../context/AppContext";
 import { useEffect } from "react";
 import CartList from "../components/CartList";
 import "../styles/ShoppingCart.css";
+import { useSessionStorage } from "../hooks/useLocalStorage";
 
 const ShopingCart = () => {
+  const [css, setCss] = useState('anim-toggle-cart-start')
   const [isActiveCart, setActiveCart] = useState(false);
-  const { cartState, cartDispatcher } = useContext(AppContext);
+  const { cartState, cartDispatcher} = useContext(AppContext);
   const [productLength, setProductsLength] = useState(0);
   const { cart } = cartState;
+
+  useSessionStorage('cart', cart, (storageCart) => { cartDispatcher({ type: 'SET_CART', payload: storageCart}) });
+
+  const handleToggleCart = () =>{
+    if(isActiveCart){
+      setCss('anim-toggle-cart-start')
+    }else{
+      setActiveCart(true)
+    }
+  }
 
   useEffect(() => {
     setProductsLength(
@@ -28,14 +40,14 @@ const ShopingCart = () => {
       <Button
         className="d-flex justify-content-center aling-items-center "
         variant="outline-primary px-4 me-lg-3 mx-1"
-        onClick={() => setActiveCart(!isActiveCart)}
+        onClick={() => handleToggleCart()}
       >
         <div className="position-relative">
           <div className="itemsInCart">{productLength}</div>
           <FaShoppingCart className="faShoppingCart" />
         </div>
       </Button>
-      {true && (
+      {isActiveCart && (
         <CartList
           cart={cart}
           cartDispatcher={cartDispatcher}
@@ -43,6 +55,9 @@ const ShopingCart = () => {
           productLength={productLength}
           isActiveCart={isActiveCart}
           setActiveCart={setActiveCart}
+          handleToggleCart={handleToggleCart}
+          setCss={setCss}
+          css={css}
         />
       )}
     </>

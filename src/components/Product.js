@@ -29,7 +29,7 @@ function Product(props) {
               {`Stock Disponible: ${product.stock}`}
             </span>
             :
-            <span className='fw-bolder mt-2'>
+            <span className='fw-bolder mt-2 bg-danger py-1 px-5 text-light rounded'>
               Sin Stock
             </span>
           }

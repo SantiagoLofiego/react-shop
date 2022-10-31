@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { MainCarousel } from '../containers/MainCarousel';
 import { ProductList } from '../containers/ProductList';

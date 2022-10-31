@@ -16,6 +16,9 @@ export const cartReducer = (state, action) => {
     case 'REMOVE_ALL':
       return { ...state, cart: removeAll(action.payload, state.cart) }
 
+    case 'SET_CART':
+      return {state, cart: action.payload}
+
     default:
       return state;
   }

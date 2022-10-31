@@ -6,6 +6,7 @@ import { OrdersList } from "../components/OrdersList";
 import Profile from "../components/Profile";
 import { AppContext } from "../context/AppContext";
 import { simpleQuery } from "../firebase/firestore";
+import { useMountAnimation } from "../hooks/useMountAnimation";
 
 
 const Account = () => {
@@ -14,7 +15,8 @@ const Account = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const animated = useMountAnimation('anim-translateXstart', 'anim-translateXend')
+ 
   useEffect(() => {
     if (userState.user.authenticated) {
       setLoading(true);
@@ -35,13 +37,13 @@ const Account = () => {
   return (
     <React.Fragment>
       {userState.user.authenticated ?
-        <div className="container">
-          <Tabs defaultActiveKey="orders" id="uncontrolled-tab-example" className="">
-            <Tab eventKey="orders" title="Compras">
-              <OrdersList orders={orders} error={error} handleClick={handleClick} loading={loading} />
-            </Tab>
+        <div className={` container ${animated} `}>
+          <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="">
             <Tab eventKey="profile" title="Perfil">
               <Profile userState={userState} updateUser={updateUser} />
+            </Tab>
+            <Tab eventKey="orders" title="Compras">
+              <OrdersList orders={orders} error={error} handleClick={handleClick} loading={loading} />
             </Tab>
           </Tabs>
         </div>

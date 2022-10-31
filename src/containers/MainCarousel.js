@@ -5,7 +5,7 @@ import { useProducts } from '../hooks/useProducts';
 
 const MainCarousel = () => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const [products, loading] = useProducts();
+  const [products] = useProducts();
   const [filterProdAv, setFilterProdAv] = useState([]);
   const [filterProdLim, setFilterProdLim] = useState([]);
   const firstSlide = {
@@ -31,7 +31,6 @@ const MainCarousel = () => {
 
   return (
     <Carousel className='m-2 shadow-sm p-3 mb-5 bg-body rounded' style={windowSize > 750 ? { height: "400px" } : { height: "255px" }}>
-      {loading ? <h2>Cargando...</h2> : null}
       <Carousel.Item key={"slide_" + firstSlide.id} className='h-75'>
         <img
           height={windowSize > 750 ? "345px" : "200px"}
@@ -51,7 +50,7 @@ const MainCarousel = () => {
                 alt=""
               />
               <div className='card-img-overlay'>
-                <h5 className="badge text-bg-danger stock-tag">Stock Limitado</h5>
+                <h5 className="badge text-bg-warning stock-tag">Stock Limitado</h5>
               </div>
             </Link>
           </Carousel.Item>
@@ -69,7 +68,7 @@ const MainCarousel = () => {
                 alt=""
               />
               <div className='card-img-overlay'>
-                <h5 className="badge text-bg-warning stock-tag">Stock Disponible</h5>
+                <h5 className="badge text-bg-success stock-tag">Stock Disponible</h5>
               </div>
             </Link>
           </Carousel.Item>

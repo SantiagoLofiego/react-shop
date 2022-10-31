@@ -5,43 +5,54 @@ import CartTotal from "./CartTotal";
 import Button from "react-bootstrap/Button";
 import "../styles/ShoppingCart.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-const CartList = (props) => {
+const CartList = ({cart, isActiveCart, setActiveCart, cartDispatcher, productLength, total, handleToggleCart, css, setCss}) => {
   const navigate = useNavigate();
   const handleConfirm = () => {
-    props.setActiveCart(!props.isActiveCart)
+    setActiveCart(!isActiveCart)
     navigate("/checkout")
   }
+
+
+  useEffect(()=>{
+    setCss('anim-toggle-cart-end')
+  },[setCss])
+
   return (
-    <div className={ !props.isActiveCart? 'containerCart': 'containerCart max-test'}>
+    <div  className={`containerCart ${css}`} onTransitionEnd={()=>{
+      if(css === 'anim-toggle-cart-start'){
+        setActiveCart(false)
+      }
+    }}>
       <div className="cartHeader w-100 h-100">
         <h3>Detalle Carrito</h3>
         <h2
           className="closetCart"
           title="Cerrar"
-          onClick={() => props.setActiveCart(!props.isActiveCart)}
+          onClick={() => handleToggleCart()}
         >
           X
         </h2>
       </div>
-      {props.cart.length > 0 ? (
+      {cart.length > 0 ? (
         <div className="bodyCart">
-          {props.cart.map((prod, index) => {
+          {cart.map((prod, index) => {
             return (
               <CartItem
                 key={prod.id + index}
                 prod={prod}
-                cartDispatcher={props.cartDispatcher}
+                cartDispatcher={cartDispatcher}
               />
             );
           })}
-          <CartTotal total={props.total} productLength={props.productLength} />
+          <CartTotal total={total} productLength={productLength} />
           <Button onClick={handleConfirm} className="mb-3" variant="primary" title="Confirma tu compra">
             Confirmar compra
           </Button>
         </div>
       ) : (
-        <CartEmpty setActiveCart={props.setActiveCart} />
+        <CartEmpty setActiveCart={setActiveCart} />
       )}
     </div>
   );
