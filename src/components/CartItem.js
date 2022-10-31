@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { FaRegTrashAlt } from 'react-icons/fa'
 import { BsDashCircleFill, BsPlusCircleFill, BsTrashFill } from "react-icons/bs";
 import "../styles/ShoppingCart.css";
 
@@ -15,7 +14,7 @@ const CartItem = ({ prod, cartDispatcher }) => {
   }, [stock, quantity]);
   return (
     <>
-      <h4 className="mx-md-3 mx-1 align-self-center text-start">{title}</h4>
+      <h4 className="mx-md-3 mx-1 mb-1 align-self-center text-start">{title}</h4>
       <div className="productDetail">
         <div className="divImg mx-md-3 mx-1">
           <img src={image} alt={title} />
@@ -55,7 +54,7 @@ const CartItem = ({ prod, cartDispatcher }) => {
             Precio: {price}
           </div>
           <div>
-            Subtotal = ${price * quantity}
+            Subtotal ${price * quantity}
           </div>
         </div>
         <div className=" p-2 btn-danger btn">
@@ -64,7 +63,7 @@ const CartItem = ({ prod, cartDispatcher }) => {
             title="Eliminar todos"
             onClick={() => cartDispatcher({ type: 'REMOVE_ALL', payload: prod })}
           >
-            <FaRegTrashAlt className="align-self-center" />
+            <BsTrashFill className="align-self-center" />
           </div>
         </div>
       </div>

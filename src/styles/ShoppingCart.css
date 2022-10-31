@@ -20,7 +20,6 @@
 .cartHeader {
   display: flex;
   justify-content: space-between;
-  padding-right: 15px;
   background-color: #0d6efd;
   min-height: 3rem;
 }
@@ -34,7 +33,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  min-height: 8rem;
+  min-height: 7rem;
   border-bottom: 3px solid rgb(207, 201, 201);
   margin: 3px;
 }
@@ -46,7 +45,7 @@
 .closetCart{
   cursor: pointer;
   position: absolute;
-  top: 5px;
+  top: 0px;
   right: 15px;
 }
 .simbMas,
@@ -101,7 +100,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 110px;
 }
 
 .simbMas,
