@@ -13,7 +13,7 @@ background: linear-gradient(66deg, rgba(255,255,255,0.6923144257703081) 0%, rgba
 
 .buttonBG {
   background-size: 200% auto;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .buttonBG:hover {

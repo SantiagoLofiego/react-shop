@@ -9,21 +9,33 @@ import { BsFillXCircleFill } from "react-icons/bs";
 
 import { useEffect } from "react";
 
-const CartList = ({cart, isActiveCart, setActiveCart, cartDispatcher, productLength, total, handleToggleCart, css, setCss}) => {
+const CartList = ({
+  cart,
+  isActiveCart,
+  setActiveCart,
+  cartDispatcher,
+  productLength,
+  total,
+  handleToggleCart,
+  cartAnimation,
+  setCartAnimation,
+  itemAdded,
+  setItemAdded
+}) => {
   const navigate = useNavigate();
   const handleConfirm = () => {
     setActiveCart(!isActiveCart)
-    navigate("/checkout")
+    navigate("/checkout/")
   }
 
 
-  useEffect(()=>{
-    setTimeout(()=>{setCss('anim-toggle-cart-end')},50)
-  },[setCss])
+  useEffect(() => {
+    setTimeout(() => { setCartAnimation('anim-toggle-cart-end') }, 50)
+  }, [setCartAnimation])
 
   return (
-    <div  className={`containerCart ${css}`} onTransitionEnd={()=>{
-      if(css === 'anim-toggle-cart-start'){
+    <div className={`containerCart ${cartAnimation}`} onTransitionEnd={() => {
+      if (cartAnimation === 'anim-toggle-cart-start') {
         setActiveCart(false)
       }
     }}>
@@ -34,7 +46,7 @@ const CartList = ({cart, isActiveCart, setActiveCart, cartDispatcher, productLen
           title="Cerrar"
           onClick={() => handleToggleCart()}
         >
-         <BsFillXCircleFill />
+          <BsFillXCircleFill />
         </h2>
       </div>
       {cart.length > 0 ? (
@@ -45,6 +57,9 @@ const CartList = ({cart, isActiveCart, setActiveCart, cartDispatcher, productLen
                 key={prod.id + index}
                 prod={prod}
                 cartDispatcher={cartDispatcher}
+                itemAdded={itemAdded}
+                setItemAdded={setItemAdded}
+                isActiveCart={isActiveCart}
               />
             );
           })}

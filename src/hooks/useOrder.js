@@ -10,9 +10,6 @@ const useOrder = (cart, user, cartDispatcher, orderID) => {
   useEffect(() => { setError(null) }, [cart])
 
   useEffect(() => {
-    /* const testCart = [{ title: 'Gafas Ray-Ban', fid: '5XMvyBtVfnF8Ziurnkim', quantity: 19,price:9800, image:"https://images.ray-ban.com/is/image/RayBan/805289126577_shad_fr.png?impolicy=SEO_1x1" },
-    { title: 'Nutella', fid: 'QNRDmikwgKWG59aomaa6', quantity: 5, price: 490, image:"https://www.bigbasket.com/media/uploads/p/xxl/40102776-2_2-nutella-hazelnut-spread-with-cocoa.jpg" },
-    { title: 'coca', fid: 'l7dD6TqekaNSiUZ2HVtJx', quantity: 6, price: 250, image:"https://carrefourar.vtexassets.com/arquivos/ids/220177/7790895000997_02.jpg?v=637704294205400000"  }] */
     let newOrder = [];
     if (!orderID && !error) {
       for (const product of cart) {
@@ -30,11 +27,6 @@ const useOrder = (cart, user, cartDispatcher, orderID) => {
     }
   }, [cart, error, orderID])
 
-  async function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-
   const confirm = async () => {
     reset();
     setStatus('Procesando compra')
@@ -48,7 +40,6 @@ const useOrder = (cart, user, cartDispatcher, orderID) => {
       setStatus(null)
       return
     }
-    await timeout(2000);
     const { error, resultOrder } = await checkOrderStock(order);
     setOrder(resultOrder)
     if (error) {

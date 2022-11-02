@@ -8,7 +8,7 @@ const Profile = ({ userState, updateUser }) => {
   const inputFile = useRef();
   const formData = useRef();
   const [uploading, setUploading] = useState(false);
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState('anim-editForm-start');
   const { user, checking } = userState;
 
   const handleUpload = (e) => {
@@ -27,7 +27,11 @@ const Profile = ({ userState, updateUser }) => {
   }
 
   const handleEdit = () => {
-    setEdit(!edit)
+    if(edit === 'anim-editForm-start'){
+      setEdit('anim-editForm-end')
+    }else{
+      setEdit('anim-editForm-start')
+    }
   }
 
   const handleSubmit = (e) => {
@@ -64,7 +68,7 @@ const Profile = ({ userState, updateUser }) => {
         <input hidden={true} ref={inputFile} type="file" name="photo" id="photo" title='subir foto' onChange={handleUpload} />
         <div className='edit-btn' onClick={handleEdit}><FaEdit /></div>
       </div>
-      <div className='profile-form flex-grow-1' hidden={!edit}>
+      <div className={`profile-form flex-grow-1 ${edit}`}>
         <form ref={formData} className='text-start'>
           <div className="form-group m-3">
             <label>Nombre</label>

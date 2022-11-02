@@ -20,7 +20,7 @@ function App() {
         {userState.user.authenticated ?
           <>
             <Route path='/account' element={<Account />} />
-            <Route path='/checkout/:id' element={<Checkout />} />
+            <Route path='/order/:id' element={<Checkout />} />
             <Route path='/checkout' element={<Checkout />} />
           </>
           :

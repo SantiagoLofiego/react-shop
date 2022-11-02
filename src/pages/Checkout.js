@@ -21,7 +21,7 @@ const Checkout = () => {
   );
   useEffect(() => {
     if (orderId) {
-      navigate(`/checkout/${orderId}`)
+      navigate(`/order/${orderId}`)
     }
   }, [orderId, navigate])
 

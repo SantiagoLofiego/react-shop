@@ -30,8 +30,9 @@ const Account = () => {
 
   }, [userState.user])
 
-  const handleClick = (id) => {
-    navigate(`/checkout/${id}`)
+  const handleCheckOrder = (id) => {
+    console.log('TO ORDER ' + id)
+    navigate(`/order/${id}`)
   }
 
   return (
@@ -43,7 +44,7 @@ const Account = () => {
               <Profile userState={userState} updateUser={updateUser} />
             </Tab>
             <Tab eventKey="orders" title="Compras">
-              <OrdersList orders={orders} error={error} handleClick={handleClick} loading={loading} />
+              <OrdersList orders={orders} error={error} handleCheckOrder={handleCheckOrder} loading={loading} />
             </Tab>
           </Tabs>
         </div>

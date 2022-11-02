@@ -38,7 +38,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   }
 
   const validateStock = () => {
-    if (stock > count) {
+    if (stock >= count) {
       add();
     }
   }

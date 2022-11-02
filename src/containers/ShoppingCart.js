@@ -8,21 +8,46 @@ import "../styles/ShoppingCart.css";
 import { useSessionStorage } from "../hooks/useLocalStorage";
 
 const ShopingCart = () => {
-  const [css, setCss] = useState('anim-toggle-cart-start')
+  const [cartAnimation, setCartAnimation] = useState('anim-toggle-cart-start')
   const [isActiveCart, setActiveCart] = useState(false);
-  const { cartState, cartDispatcher} = useContext(AppContext);
   const [productLength, setProductsLength] = useState(0);
+  const [previousCart, setPreviousCart] = useState({});
+  const [itemAdded, setItemAdded] = useState(null)
+  const { cartState, cartDispatcher} = useContext(AppContext);
   const { cart } = cartState;
 
   useSessionStorage('cart', cart, (storageCart) => { cartDispatcher({ type: 'SET_CART', payload: storageCart}) });
-
+  
   const handleToggleCart = () =>{
     if(isActiveCart){
-      setCss('anim-toggle-cart-start')
+      setCartAnimation('anim-toggle-cart-start')
     }else{
       setActiveCart(true)
     }
   }
+
+  useEffect(()=>{
+    let auxPrevCart = {...previousCart};
+    if(true){
+      for (const item of cart) {
+        if(!auxPrevCart[item.fid]){
+          if(isActiveCart){
+            setItemAdded(item.fid)
+          }
+          auxPrevCart = ({...auxPrevCart, [item.fid]: true})
+        }else{
+          setItemAdded('none')
+        }
+      }
+      for (const key in auxPrevCart) {
+        const find = cart.find((item)=>item.fid === key)
+        if(!find){
+          auxPrevCart=({...auxPrevCart, [key]: false});
+        }
+      }
+      setPreviousCart(auxPrevCart)
+    }
+  },[cart])
 
   useEffect(() => {
     setProductsLength(
@@ -56,8 +81,10 @@ const ShopingCart = () => {
           isActiveCart={isActiveCart}
           setActiveCart={setActiveCart}
           handleToggleCart={handleToggleCart}
-          setCss={setCss}
-          css={css}
+          itemAdded={itemAdded}
+          setItemAdded={setItemAdded}
+          setCartAnimation={setCartAnimation}
+          cartAnimation={cartAnimation}
         />
       )}
     </>

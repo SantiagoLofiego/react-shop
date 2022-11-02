@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Pagination, Spinner } from 'react-bootstrap';
 
-const OrdersList = ({ handleClick, error, orders, loading }) => {
+const OrdersList = ({ handleCheckOrder, error, orders, loading }) => {
   const [pagOrders, setPageOrders] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [pages, setPages] = useState([]);
@@ -31,7 +31,7 @@ const OrdersList = ({ handleClick, error, orders, loading }) => {
             <div key={order.fid} className='d-flex flex-wrap alert alert-success m-auto mt-2 order'>
               <div className="p-2 text-start flex-fill">Order ID: {order.fid}</div>
               <div className="p-2 text-start flex-fill">Fecha de compra: {new Date(order.date.seconds * 1000).toLocaleDateString()}</div>
-              <button onClick={() => handleClick(order.fid)} className="btn btn-primary">Ver Compra</button>
+              <button onClick={() => handleCheckOrder(order.fid)} className="btn btn-primary">Ver Compra</button>
             </div>
           )
         })}
