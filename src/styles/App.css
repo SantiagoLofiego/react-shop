@@ -71,6 +71,14 @@
   height: 250px;
 }
 
+.order-id {
+  min-width: 300px;
+}
+
+.order-date {
+  min-width: 280px;
+}
+
 .profile-default-pic {
   width: 250px;
   height: 250px;
@@ -203,12 +211,12 @@
 
 .anim-fade-start {
   opacity: 0;
-  transition: all 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
 .anim-fade-end {
   opacity: 1;
-  transition: all 1s ease;
+  transition: opacity 0.5s ease;
 }
 
 .addToCartIcon {
@@ -284,4 +292,13 @@
     transform: translateX(0px);
     max-height: 200px;
   }
+}
+
+.anim-pagination-start {
+  opacity: 0;
+}
+
+.anim-pagination-end {
+  opacity: 1;
+  transition: all 1s ease;
 }

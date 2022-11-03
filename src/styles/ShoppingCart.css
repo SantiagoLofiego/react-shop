@@ -3,12 +3,12 @@
   top: 65px;
   z-index: 3;
   width: 450px;
-  /* background-color: rgb(33, 37, 41); */
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.315) 0%, rgba(0, 0, 0, 0.418) 100%), radial-gradient(at top center, rgba(199, 199, 199, 0.562) 0%, rgba(0, 0, 0, 0.521) 120%) #686868;
   background-blend-mode: multiply, multiply;
   color: white;
   right: 0;
   overflow-y: auto;
+  overflow-x: clip;
   max-height: calc(100vh - 65px);
 }
 
