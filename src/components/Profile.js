@@ -8,7 +8,7 @@ const Profile = ({ userState, updateUser }) => {
   const inputFile = useRef();
   const formData = useRef();
   const [uploading, setUploading] = useState(false);
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState('anim-editForm-start');
   const { user, checking } = userState;
 
   const handleUpload = (e) => {
@@ -27,7 +27,11 @@ const Profile = ({ userState, updateUser }) => {
   }
 
   const handleEdit = () => {
-    setEdit(!edit)
+    if(edit === 'anim-editForm-start'){
+      setEdit('anim-editForm-end')
+    }else{
+      setEdit('anim-editForm-start')
+    }
   }
 
   const handleSubmit = (e) => {
@@ -51,7 +55,7 @@ const Profile = ({ userState, updateUser }) => {
             <FaUser />
           </div>
         }
-        <div id='photo-upload-btn' className='bg-dark' onClick={handleUploadBtn}>
+        <div id='photo-upload-btn' onClick={handleUploadBtn}>
           {uploading ? <Spinner animation="grow" variant="light" /> : <FaCamera />}
         </div>
       </div>
@@ -62,9 +66,9 @@ const Profile = ({ userState, updateUser }) => {
         <h3 className='h3'>Dirección: {user.address}</h3>
         <h3 className='h3'>Ciudad: {user.city}</h3>
         <input hidden={true} ref={inputFile} type="file" name="photo" id="photo" title='subir foto' onChange={handleUpload} />
-        <button className='edit-btn' onClick={handleEdit}><FaEdit /></button>
+        <div className='edit-btn' onClick={handleEdit}><FaEdit /></div>
       </div>
-      <div className='profile-form flex-grow-1' hidden={!edit}>
+      <div className={`profile-form flex-grow-1 ${edit}`}>
         <form ref={formData} className='text-start'>
           <div className="form-group m-3">
             <label>Nombre</label>

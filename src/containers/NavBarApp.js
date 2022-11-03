@@ -1,70 +1,68 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Alert from 'react-bootstrap/Alert';
 import { LinkContainer } from "react-router-bootstrap";
 import ShoppingCart from "./ShoppingCart";
 import { AppContext } from "../context/AppContext";
 import { NavLink } from "react-router-dom";
+import { MdOutlineLogout, MdHome } from "react-icons/md";
+import { FaUserAlt } from "react-icons/fa"
 
 function NavBarApp() {
-  const { userState, logout } = React.useContext(AppContext)
+  const { userState, logout, cartDispatcher } = React.useContext(AppContext)
   const [showAlertSession, setShowAlertSession] = useState(false);
 
   const handleLogout = () => {
     setShowAlertSession(true);
+    cartDispatcher({type: 'EMPTY_CART'})
     logout();
   }
 
   return (
-    <Navbar expand="lg" bg="dark" variant="dark" className="">
-      <Container fluid className=" p-1">
-        <LinkContainer to="/">
-          <Navbar.Brand href="#" className="mx-lg-5">
-            <h3 className="m-0">Shop</h3>
-          </Navbar.Brand>
+    <>
+      <Navbar sticky="top" variant="dark" className="d-flex align-items-center bg-dark py-2 navbar-container ">
+        <LinkContainer className="text-decoration-none" to={'/'}>
+          <LinkContainer to="/">
+            <Navbar.Brand href="#" className="mx-lg-5 mx-1">
+              <h1 className="m-0">Shop</h1>
+            </Navbar.Brand>
+          </LinkContainer>
         </LinkContainer>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0 d-flex justify-content-end w-100 "
-            navbarScroll
-          >
-            {userState.user.authenticated ?
-              <p className="userMail text-light">
-                <LinkContainer to="/account">
-                  <NavLink>
-                    {userState.user.email}
-                  </NavLink>
-                </LinkContainer> </p>
-              :
-              ''
-            }
-            <LinkContainer to="/">
-              <Nav.Link className="pb-2"> <h5 className=" m-0">Home</h5></Nav.Link>
+        <div className="flex-grow-1"></div>
+        <div className='d-flex justify-content-end align-items-center nav-icons'>
+          <LinkContainer to="/">
+            <Button variant="outline-primary" className="btn btn-outline-primary my-2 mx-lg-3 mx-1 nav-btn-home"><MdHome /></Button>
+          </LinkContainer>
+          {userState.user.authenticated
+            ? <>
+              <LinkContainer to="/account" >
+                <NavLink >
+                  <div className="nav-user-icon mx-2 my-1">
+                    {userState.user.photoURL
+                      ? <img src={userState.user.photoURL} alt="" />
+                      : <FaUserAlt />}
+                  </div>
+                </NavLink>
+              </LinkContainer>
+              <span className="nav-email">{userState.user.email}</span>
+              <Button variant="outline-primary" className="btn btn-outline-primary my-2 mx-lg-3 mx-1" onClick={handleLogout}><MdOutlineLogout /></Button>
+            </>
+            :
+            <LinkContainer to="/Login">
+              <Button variant="outline-primary" className="btn btn-outline-primary my-2 mx-lg-3 mx-1">Login</Button>
             </LinkContainer>
-            {userState.user.authenticated ?
-              <>
-                <Button variant="outline-primary" className="btn btn-outline-primary my-2 my-lg-0 mx-lg-3" onClick={handleLogout}>Logout</Button>
-              </> : <>
-                <LinkContainer to="/Login">
-                  <Button variant="outline-primary" className="btn btn-outline-primary my-2 my-lg-0 mx-lg-3">Login</Button>
-                </LinkContainer>
-                {showAlertSession ?
-                  <Alert key='primary' variant='primary' className="alert-session">
-                    Ha cerrado la sesión correctamente
-                  </Alert>
-                  : ''
-                }
-              </>}
-            <ShoppingCart />
-            <Button variant="outline-primary" className="btn btn-outline-primary my-2 my-lg-0 mx-lg-3 d-none">Sing out</Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          }
+        </div>
+        <ShoppingCart />
+      </Navbar>
+      {showAlertSession ?
+        <Alert key='primary' variant='primary' className="alert-session" onAnimationEnd={() => setShowAlertSession(false)}>
+          Ha cerrado la sesión correctamente
+        </Alert>
+        : ''
+      }
+    </>
   );
 }
 

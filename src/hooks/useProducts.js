@@ -14,5 +14,5 @@ export const useProducts = () => {
       .catch( error => console.log(error));
   }, [])
 
-  return [products, loading];
+  return {products, loading};
 }

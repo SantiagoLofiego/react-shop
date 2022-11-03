@@ -1,4 +1,27 @@
+.cardShaddow {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background: rgb(255,255,255);
+background: linear-gradient(66deg, rgba(255,255,255,0.6923144257703081) 0%, rgba(247,248,252,1) 21%, rgba(189, 189, 189, 0.315) 49%, rgba(191,191,191,0.09567577030812324) 50%, rgba(255,255,255,1) 79%);
+
+}
+
 .imageProd {
   height: 200px;
   object-fit: contain;
+  background-color: white;
+}
+
+.buttonBG {
+  background-size: 200% auto;
+  transition: 0.3s;
+}
+
+.buttonBG:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  box-shadow: rgba(0, 0, 0, 0.30) 0px 3px 6px, rgba(0, 0, 0, 0.40) 0px 3px 6px;
+}
+
+.buttonBG-1 {
+  background-image: linear-gradient(to right, #6c91f7 0%, #374bfd 81%, #240bff 100%);
 }

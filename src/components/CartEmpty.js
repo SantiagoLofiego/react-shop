@@ -7,7 +7,7 @@ const CartEmpty = ({ setActiveCart }) => {
     <div className="d-flex flex-column justify-content-center  aling-items-center cartEmty">
       <h4 className="mt-5">Carrito vacio</h4>
       <img
-        className="w-50 align-self-center mt-4"
+        className="w-25 align-self-center mt-4"
         src="https://d3tvemk8zf61cc.cloudfront.net/empty_cart_icon.png"
         alt="vacio"
       />

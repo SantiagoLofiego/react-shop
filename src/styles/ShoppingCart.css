@@ -1,128 +1,151 @@
 .containerCart {
-    position: absolute;
-    top: 60px;
-    z-index: 3;
-    width: 500px;
-    min-height: 500px;
-    margin-top: 1rem;
-    background-color: rgb(33,37,41);
-    color: white;
+  position: absolute;
+  top: 65px;
+  z-index: 3;
+  width: 450px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.315) 0%, rgba(0, 0, 0, 0.418) 100%), radial-gradient(at top center, rgba(199, 199, 199, 0.562) 0%, rgba(0, 0, 0, 0.521) 120%) #686868;
+  background-blend-mode: multiply, multiply;
+  color: white;
+  right: 0;
+  overflow-y: auto;
+  overflow-x: clip;
+  max-height: calc(100vh - 65px);
+}
 
+
+.max-test {
+  max-height: calc(100vh - 65px);
 }
 
 .cartHeader {
-    display: flex;
-    justify-content: space-between;
-    padding-right: 15px;
-    background-color: #f3b56f;
-    min-height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #0d6efd;
+  min-height: 3rem;
 }
 
-.cartHeader > h3 {
-    width: 100%;
-    align-self: center;
+.cartHeader>h3 {
+  width: 100%;
+  align-self: center;
 }
 
 .productDetail {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    align-items: center;
-    min-height: 8rem;
-    border-bottom: 3px solid rgb(207, 201, 201);
-    margin: 3px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  min-height: 7rem;
+  border-bottom: 3px solid rgb(207, 201, 201);
+  margin: 3px;
 }
 
 .productDetail h3 {
-    padding-left: 1.5rem;
+  padding-left: 1.5rem;
 }
 
-.closetCart,
-.simbMas, .simbMenos {
-    cursor: pointer;
+.closetCart{
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 15px;
+}
+.simbMas,
+.simbMenos {
+  cursor: pointer;
 }
 
 .closetCart:hover {
-    color: red;
-    transition: 1s;
+  color: red;
+  transition: 0.3s;
 
 }
 
 .x {
-    position: absolute;
-    top: 2px;
-    right: 5px;
+  position: absolute;
+  top: 2px;
+  right: 5px;
 }
 
 .counterProducts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .desactivarCarrito {
-    display: none;
+  display: none;
 }
 
 .divImg {
-    max-width: 20%;
-    padding-left: .5rem;
+  height: 90px;
+  width: 90px;
+  border-radius: 10%;
+  overflow: hidden;
+  
+  align-self: center;
+
+  box-shadow: rgba(255, 255, 255, 0.616) 0px 1px 6px, rgba(0, 0, 0, 0.555) 0px 7px 13px -3px, rgba(0, 0, 0, 0.425) 0px -3px 0px inset;
+  border: 1px solid #000000;
 }
 
-.divImg > img {
-    max-width: 100%;
+.divImg>img {
+  height: 90px;
+  background-color: white;
+  width: 90px;
+  object-fit: contain;
 }
 
 .cantSubTotal {
-    width: 70%;
-    display: flex;
-    flex-direction: column;    
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.simbMas, .simbMenos {
-    font-size: 1.3rem;
-    font-weight: 800;
+.simbMas,
+.simbMenos {
+  font-size: 1.3rem;
+  font-weight: 800;
 }
 
 .tolalCart {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 /*Estilos numero de items carrito*/
 
 .faShoppingCart {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .itemsInCart {
-    position: absolute;
-    top: -15%;
-    right: -20%;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
+  position: absolute;
+  top: -15%;
+  right: -20%;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
 }
 
 
-@media (max-width: 768px) {
-    .containerCart {
-      width: 100%;
-      margin: 0;
-    } }
+@media (max-width: 600px) {
+  .containerCart {
+    width: 100%;
+    margin: 0;
+  }
+}
 
 @media (max-width: 990px) {
-    .containerCart {
-        top: 0;
-        right: 0%;
-    } }
+  .containerCart {
+    top: 65px;
+    right: 0%;
+  }
+}

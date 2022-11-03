@@ -2,10 +2,11 @@ import { Button, Spinner } from "react-bootstrap";
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from "../context/AppContext";
+import { useMountAnimation } from "../hooks/useMountAnimation";
 
 const SignIn = ({ changeAuthMode }) => {
   const navigate = useNavigate();
-
+  const animated = useMountAnimation('anim-fade-start', 'anim-fade-end');
   const { userState, loginWithEmailAndPassword } = React.useContext(AppContext)
 
   const handleSubmit = (e) => {
@@ -33,8 +34,8 @@ const SignIn = ({ changeAuthMode }) => {
   }
 
   return (
-    <div className="Auth-form-container">
-      <form className="Auth-form" onSubmit={handleSubmit}>
+    <div className={`Auth-form-container`}>
+      <form className={`Auth-form ${animated}`} onSubmit={handleSubmit}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Inicio de Sesión</h3>
           <div className="text-center">
